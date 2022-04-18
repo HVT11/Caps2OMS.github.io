@@ -1,0 +1,145 @@
+.app__container {
+    margin-top: 10px;
+}
+
+.navbar-list {
+    width: 100%;
+    list-style: none;
+    /* margin-left: 15px; */
+    margin-top: 0;
+    background-color: var(--white-color);
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+.navbar-item {
+    border-top: 1px solid var(--border-color);
+}
+
+.navbar-item:first-child {
+    border-top: transparent;
+}
+.navbar-item__link {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    transition: right linear 0.1s;
+    right: 0;
+}
+
+.navbar-item__link:hover {
+    color: blueviolet;
+    right: -4px;
+}
+
+.navbar-item__icon {
+    font-size: 1.2rem;
+    margin-right: 4px;
+}
+
+.navbar-item__text {
+    font-size: 1.3rem;
+}
+
+.info-lastlogin {
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+.info-lastlogin__info-header {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.info-lastlogin__name-label {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+}
+
+.info-lastlogin__img {
+    width: 200px;
+    padding: 30px;
+    border-radius: 50%;
+}
+
+
+.lastlogin__heading {
+    margin-left: 20px;
+    font-size: 1.6rem;
+}
+
+.lastlogin__list {
+    list-style: none;
+
+}
+
+.lastlogin__item {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.user-lastlogin {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+}
+
+.user-lastlogin-tb {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.4rem;
+    text-align: center;
+}
+
+.user-lastlogin-heading {
+    width: 50%;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+}
+
+.user-lastlogin-data {
+    width: 50%;
+}
+
+.statistical__total-student-teacher {
+    display: flex;
+    justify-content: space-between;
+}
+
+.statistical__total-item {
+    width: 49.5%;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+}
+
+.statistical__icon {
+    width: 50%;
+    font-size: 5.5rem;
+    margin-left: 20px;
+}
+
+.statistical__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.statistical__label {
+    display: block;
+    margin: 5px 0;
+    font-size: 1.2rem;
+}
+
+.statistical__number {
+    color: #59D4E4;
+    font-size: 3rem;
+}
