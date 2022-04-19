@@ -16,6 +16,10 @@
     border-top: 1px solid var(--border-color);
 }
 
+.navbar-item {
+    cursor: pointer;
+}
+
 .navbar-item:first-child {
     border-top: transparent;
 }
@@ -165,6 +169,10 @@
     padding: 10px;
 }
 
+.all-user__heading-btn:hover {
+    cursor: pointer;
+}
+
 .all-user-tb {
     width: 100%;
     margin: 0;
@@ -191,5 +199,4 @@
 
 .all-user-tb__body {
     display: block;
-
 }
