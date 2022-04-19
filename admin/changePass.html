@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
+    <link rel="stylesheet" href="../assets/styles/base.css">
+    <link rel="stylesheet" href="../assets/styles/admin/content.css">
+    <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1/css/all.min.css">
+</head>
+<body>
+    <div class="app">
+        <div class="app__header">
+            <div class="grid">
+                <div class="header">
+                    <div class="header-with-avatar">
+                        <img src="../assets/img/icon.png" alt="" class="header__icon">
+                        <h2 class="header__software-name">Online Classroom 
+                        </br> Management Support Tool</h2>
+                    </div>
+                    <div class="header-with-avatar">
+                        <div class="header__user">
+                            <img src="../assets/img/1.png" alt="avatar" class="header__avatar">
+                            <p class="header__username">Admin01</p>
+                            <i class="header__icon-down fa-solid fa-angle-down"></i>
+    
+                            <ul class="header__user-menu">
+                                <li class="header__user-item">
+                                    <a href="" class="">Thông tin cá nhân</a>
+                                </li>
+                                <li class="header__user-item">
+                                    <a href="" class="">Đổi mật khẩu</a>
+                                </li>
+                                <li class="header__user-item">
+                                    <a href="" class="">Đăng xuất</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="app__container">
+            <div class="grid">
+                <div class="grid__row">
+                    <div class="grid__column-2">
+                        <nav class="navbar">
+                            <ul class="navbar-list">
+                                <li class="navbar-item">
+                                    <a href="./admin.html" class="navbar-item__link">
+                                        <i class="navbar-item__icon fa-solid fa-calculator"></i>
+                                        <p class="navbar-item__text">Thống kê</p>
+                                    </a>
+                                </li>
+                                <li class="navbar-item">
+                                    <a href="" class="navbar-item__link">
+                                        <i class="navbar-item__icon fa-solid fa-list-check"></i>
+                                        <p class="navbar-item__text">Quản lí người dùng</p>
+                                    </a>
+                                </li>
+                                <li class="navbar-item">
+                                    <a href="./addTeacher.html" class="navbar-item__link">
+                                        <i class="navbar-item__icon fa-solid fa-address-book"></i>
+                                        <p class="navbar-item__text">Thêm giáo viên</p>
+                                    </a>
+                                </li>
+                                <li class="navbar-item">
+                                    <a href="./changePass.html" class="navbar-item__link">
+                                        <i class="navbar-item__icon fa-solid fa-key"></i>
+                                        <p class="navbar-item__text">Đổi mật khẩu</p>
+                                    </a>
+                                </li>
+                                <li class="navbar-item">
+                                    <a href="" class="navbar-item__link">
+                                        <i class="navbar-item__icon fa-solid fa-bell"></i>
+                                        <p class="navbar-item__text">Liên hệ</p>
+                                    </a>
+                                </li>
+                                <li class="navbar-item">
+                                    <a href="" class="navbar-item__link">
+                                        <i class="navbar-item__icon fa-solid fa-right-from-bracket"></i>
+                                        <p class="navbar-item__text">Đăng xuất</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="grid__column-10">
+                        <div class="content">
+                            <h1 class="content-heading">Đổi mật khẩu</h1>
+                            <ul class="content-list">
+                                <li class="content-item">
+                                    <p class="content-item__label">Mật khẩu cũ:</p>
+                                    <input type="text" class="content-item__input">
+                                </li>
+                                <li class="content-item">
+                                    <p class="content-item__label">Mật khẩu mới:</p>
+                                    <input type="text" class="content-item__input">
+                                </li>
+                                <li class="content-item">
+                                    <p class="content-item__label">Nhập lại mật khẩu:</p>
+                                    <input type="text" class="content-item__input">
+                                </li>
+                            </ul>
+                            <button class="btn">Đổi mật khẩu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="app__footer">
+            <p>This is the product to be demo not product to be sell</p>
+            <p class="footer">Copyright © 2022 all rights reserved</p>
+        </footer>
+    </div>
+    <!-- Modal layout -->
+    <!-- <div class="modal">
+        <div class="modal__overlay">
+        </div>
+        <div class="modal__body">
+            <div class="notify-form"> -->
+                <!-- Add teacher failure -->
+                <!-- <div class="notify-form__container notify-form__container--failure">
+                    <div class="notify-form__header">
+                        <h1 class="notify-form__heading">Thêm giáo viên thất bại</h1>
+                    </div>
+                    
+
+                    <div class="notify-form__controls">
+                        <button class="btn">Thử lại</button>
+                    </div>
+                </div> -->
+                <!-- Add teacher success -->
+                <!-- <div class="notify-form__container notify-form__container--success">
+                    <div class="notify-form__header">
+                        <h1 class="notify-form__heading">Thêm giáo viên thành công</h1>
+                    </div>
+                    
+                    <ul class="notify-form__account-list">
+                        <li class="notify-form__account-item">
+                            <p class="account-item__label">Tên tài khoản:</p>
+                            <p class="account-item__label">vythithutrinh</p>
+                        </li>
+                        <li class="notify-form__account-item">
+                            <p class="account-item__label">Mật khẩu:</p>
+                            <p class="account-item__label">123456</p>
+                        </li>
+                    </ul>
+
+                    <div class="notify-form__controls">
+                        <button class="btn notify-form__controls-btn">Trở lại</button>
+                    </div>
+                </div> -->
+            <!-- </div>
+        </div>
+    </div> -->
+</body>
+</html>

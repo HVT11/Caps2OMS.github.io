@@ -1,8 +1,11 @@
 :root {
+    --primary-color: #6772E5;
     --white-color : #fff;
     --black-color : #000;
     --text-color : #333;
     --border-color : #dbdbdb;
+    --background-color :rgba(255, 255, 255, 0.7);
+
 }
 
 * {
@@ -167,6 +170,11 @@ html {
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+/* Body */
+.app__container {
+    height: 600px;
+}
+
 /* Animation */
 
 @keyframes fadeIn {
@@ -216,8 +224,95 @@ html {
     animation: Growth linear 0.1s;
 }
 
+.logout-form__header {
+    font-size: 1.4rem;
+}
+
 .logout-form {
-    width: 300px;
+    width: 400px;
+    height: 100px;
     padding: 10px;
-    
+}
+
+.logout-form__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logout-form__controls {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.logout-form__heading {
+    margin: 10px 0 20px;
+    font-size: 2rem;
+    padding: 0;
+}
+
+/* Button */
+.btn {
+    width: 100px;
+    padding: 4px;
+    font-size: 1.6rem;
+    color: var(--white-color);
+    background-color: var(--primary-color);
+    border: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* Navbar */
+.app__container {
+    margin-top: 10px;
+}
+
+.navbar-list {
+    width: 100%;
+    list-style: none;
+    /* margin-left: 15px; */
+    margin-top: 0;
+    background-color: var(--white-color);
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+.navbar-item {
+    border-top: 1px solid var(--border-color);
+}
+
+.navbar-item {
+    cursor: pointer;
+}
+
+.navbar-item:first-child {
+    border-top: transparent;
+}
+.navbar-item__link {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    transition: right linear 0.1s;
+    right: 0;
+    text-decoration: none;
+    color: #222;
+}
+
+.navbar-item__link:hover {
+    color: blueviolet;
+    right: -4px;
+}
+
+.navbar-item__icon {
+    font-size: 1.2rem;
+    margin-right: 4px;
+}
+
+.navbar-item__text {
+    font-size: 1.3rem;
 }
