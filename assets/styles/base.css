@@ -141,7 +141,8 @@ html {
 }
 
 .header__icon {
-    width: 140px;
+    width: 50px;
+    margin-right: 6px;
 }
 
 .header__avatar {
@@ -263,6 +264,11 @@ html {
     border: transparent;
     border-radius: 10px;
     cursor: pointer;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.btn:hover {
+    box-shadow: none;
 }
 
 /* Navbar */
