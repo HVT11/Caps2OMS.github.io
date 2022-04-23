@@ -1,51 +1,6 @@
-.app__container {
-    margin-top: 10px;
-}
-
-.navbar-list {
-    width: 100%;
-    list-style: none;
-    /* margin-left: 15px; */
-    margin-top: 0;
-    background-color: var(--white-color);
-    padding: 0 10px;
-    border-radius: 5px;
-}
-
-.navbar-item {
-    border-top: 1px solid var(--border-color);
-}
-
-.navbar-item:first-child {
-    border-top: transparent;
-}
-.navbar-item__link {
-    position: relative;
-    display: block;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    transition: right linear 0.1s;
-    right: 0;
-}
-
-.navbar-item__link:hover {
-    color: blueviolet;
-    right: -4px;
-}
-
-.navbar-item__icon {
-    font-size: 1.2rem;
-    margin-right: 4px;
-}
-
-.navbar-item__text {
-    font-size: 1.3rem;
-}
-
 .info-lastlogin {
+    background: rgba(255, 255, 255, 0.7);
     border-radius: 10px;
-    background-color: #fff;
 }
 
 .info-lastlogin__info-header {
@@ -114,7 +69,7 @@
 }
 
 .statistical__total-item {
-    width: 49.5%;
+    width: 49.7%;
     display: flex;
     align-items: center;
     background: rgba(255, 255, 255, 0.7);
@@ -142,4 +97,57 @@
 .statistical__number {
     color: #59D4E4;
     font-size: 3rem;
+}
+
+.statistical__total-class {
+    margin-top: 3px;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+}
+
+.all-user {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+}
+
+.all-user__heading {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.all-user__heading-btn:hover {
+    cursor: pointer;
+}
+
+.all-user-tb {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    font-size: 1.3rem;
+}
+
+.all-user-tb__head {
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.all-user-row {
+    display: flex;
+    margin: 10px 0;
+}
+
+.all-user-heading, .all-user-data {
+    width: 25%;
+    padding: 0;
+}
+
+.all-user-tb__body {
+    display: block;
 }

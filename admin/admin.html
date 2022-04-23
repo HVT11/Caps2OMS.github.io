@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
-    <link rel="stylesheet" href="./assets/styles/base.css">
-    <link rel="stylesheet" href="./assets/styles/admin.css">
-    <link rel="stylesheet" href="./assets/fonts/fontawesome-free-6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/styles/base.css">
+    <link rel="stylesheet" href="../assets/styles/admin/admin.css">
+    <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1/css/all.min.css">
 </head>
 <body>
     <div class="app">
@@ -16,13 +16,13 @@
             <div class="grid">
                 <div class="header">
                     <div class="header-with-avatar">
-                        <img src="./assets/img/icon.png" alt="" class="header__icon">
+                        <img src="../assets/img/icon.png" alt="" class="header__icon">
                         <h2 class="header__software-name">Online Classroom 
                         </br> Management Support Tool</h2>
                     </div>
                     <div class="header-with-avatar">
                         <div class="header__user">
-                            <img src="./assets/img/1.png" alt="avatar" class="header__avatar">
+                            <img src="../assets/img/1.png" alt="avatar" class="header__avatar">
                             <p class="header__username">Admin01</p>
                             <i class="header__icon-down fa-solid fa-angle-down"></i>
     
@@ -49,37 +49,37 @@
                         <nav class="navbar">
                             <ul class="navbar-list">
                                 <li class="navbar-item">
-                                    <a class="navbar-item__link">
+                                    <a href="./admin.html" class="navbar-item__link">
                                         <i class="navbar-item__icon fa-solid fa-calculator"></i>
                                         <p class="navbar-item__text">Thống kê</p>
                                     </a>
                                 </li>
                                 <li class="navbar-item">
-                                    <a class="navbar-item__link">
+                                    <a href="" class="navbar-item__link">
                                         <i class="navbar-item__icon fa-solid fa-list-check"></i>
                                         <p class="navbar-item__text">Quản lí người dùng</p>
                                     </a>
                                 </li>
                                 <li class="navbar-item">
-                                    <a class="navbar-item__link">
+                                    <a href="./addTeacher.html" class="navbar-item__link">
                                         <i class="navbar-item__icon fa-solid fa-address-book"></i>
                                         <p class="navbar-item__text">Thêm giáo viên</p>
                                     </a>
                                 </li>
                                 <li class="navbar-item">
-                                    <a class="navbar-item__link">
+                                    <a href="./changePass.html" class="navbar-item__link">
                                         <i class="navbar-item__icon fa-solid fa-key"></i>
                                         <p class="navbar-item__text">Đổi mật khẩu</p>
                                     </a>
                                 </li>
                                 <li class="navbar-item">
-                                    <a class="navbar-item__link">
+                                    <a href="" class="navbar-item__link">
                                         <i class="navbar-item__icon fa-solid fa-bell"></i>
                                         <p class="navbar-item__text">Liên hệ</p>
                                     </a>
                                 </li>
                                 <li class="navbar-item">
-                                    <a class="navbar-item__link">
+                                    <a href="" class="navbar-item__link">
                                         <i class="navbar-item__icon fa-solid fa-right-from-bracket"></i>
                                         <p class="navbar-item__text">Đăng xuất</p>
                                     </a>
@@ -92,7 +92,7 @@
                         <div class="info-lastlogin">
                             <div class="info-lastlogin__info">
                                 <div class="info-lastlogin__info-header">
-                                    <img src="./assets/img/1.png" alt="" class="info-lastlogin__img">
+                                    <img src="../assets/img/1.png" alt="" class="info-lastlogin__img">
                                     <div class="info-lastlogin__name-label">
                                         <h1 class="info-lastlogin__name">Admin 1</h1>
                                         <p class="info-lastlogin__label">Admin</p>
@@ -181,15 +181,136 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="statistical__total-class">
+                                <i class="statistical__icon fa-solid fa-book-open"></i>
+                                <div class="statistical__content">
+                                    <p class="statistical__label">Tổng số lớp</p>
+                                    <h1 class="statistical__number">15</h1>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="all-user">
+                            <div class="all-user__heading">
+                                <h1 class="all-user__heading-title">Tất cả người dùng</h1>
+                                <div class="all-user__heading-btn">
+                                    <button href="" class="all-user__heading-btn">
+                                        <i class="fa-solid fa-arrow-up-short-wide"></i>
+                                        <span>Sort</span>
+                                    </button>
+                                    <button href="" class="all-user__heading-btn">
+                                        <i class="fa-solid fa-filter"></i>
+                                        <span>Filter</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <table class="all-user-tb">
+                                <thead class="all-user-tb__head">
+                                    <tr class="all-user-row">
+                                        <th class="all-user-heading">Tên đăng nhập</th>
+                                        <th class="all-user-heading">Họ & tên</th>
+                                        <th class="all-user-heading">Ngày tạo</th>
+                                        <th class="all-user-heading">Loại người dùng</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="all-user-tb__body">
+                                    <tr class="all-user-row">
+                                        <td class="all-user-data">tomcruise</td>
+                                        <td class="all-user-data">Tom Cruise</td>
+                                        <td class="all-user-data">02/03/2022</td>
+                                        <td class="all-user-data">Học sinh</td>
+                                    </tr>
+                                    <tr class="all-user-row">
+                                        <td class="all-user-data">mattdamon</td>
+                                        <td class="all-user-data">Matt Damon</td>
+                                        <td class="all-user-data">03/03/2022</td>
+                                        <td class="all-user-data">Admin</td>
+                                    </tr>
+                                    <tr class="all-user-row">
+                                        <td class="all-user-data">vuvanhung</td>
+                                        <td class="all-user-data">02/03/2022</td>
+                                        <td class="all-user-data">02/03/2022</td>
+                                        <td class="all-user-data">02/03/2022</td>
+                                    </tr>
+                                    <tr class="all-user-row">
+                                        <td class="all-user-data">vansyhung</td>
+                                        <td class="all-user-data">02/03/2022</td>
+                                        <td class="all-user-data">02/03/2022</td>
+                                        <td class="all-user-data">02/03/2022</td>
+                                    </tr>
+                                    <tr class="all-user-row">
+                                        <td class="all-user-data">mattdamon</td>
+                                        <td class="all-user-data">Matt Damon</td>
+                                        <td class="all-user-data">03/03/2022</td>
+                                        <td class="all-user-data">Admin</td>
+                                    </tr>
+                                    <tr class="all-user-row">
+                                        <td class="all-user-data">mattdamon</td>
+                                        <td class="all-user-data">Matt Damon</td>
+                                        <td class="all-user-data">03/03/2022</td>
+                                        <td class="all-user-data">Admin</td>
+                                    </tr>
+                                    <tr class="all-user-row">
+                                        <td class="all-user-data">mattdamon</td>
+                                        <td class="all-user-data">Matt Damon</td>
+                                        <td class="all-user-data">03/03/2022</td>
+                                        <td class="all-user-data">Admin</td>
+                                    </tr>
+                                    <tr class="all-user-row">
+                                        <td class="all-user-data">mattdamon</td>
+                                        <td class="all-user-data">Matt Damon</td>
+                                        <td class="all-user-data">03/03/2022</td>
+                                        <td class="all-user-data">Admin</td>
+                                    </tr>
+                                    <tr class="all-user-row">
+                                        <td class="all-user-data">mattdamon</td>
+                                        <td class="all-user-data">Matt Damon</td>
+                                        <td class="all-user-data">03/03/2022</td>
+                                        <td class="all-user-data">Admin</td>
+                                    </tr>
+                                    <tr class="all-user-row">
+                                        <td class="all-user-data">mattdamon</td>
+                                        <td class="all-user-data">Matt Damon</td>
+                                        <td class="all-user-data">03/03/2022</td>
+                                        <td class="all-user-data">Admin</td>
+                                    </tr>
+                                    <tr class="all-user-row">
+                                        <td class="all-user-data">mattdamon</td>
+                                        <td class="all-user-data">Matt Damon</td>
+                                        <td class="all-user-data">03/03/2022</td>
+                                        <td class="all-user-data">Admin</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- <footer class="app__footer">
-            <div class="p">Copyright © 2022 all rights reserved</div>
-        </footer> -->
+        <footer class="app__footer">
+            <p>This is the product to be demo not product to be sell</p>
+            <p class="footer">Copyright © 2022 all rights reserved</p>
+        </footer>
     </div>
+    <!-- Modal layout -->
+    <!-- <div class="modal">
+        <div class="modal__overlay">
+        </div>
+        <div class="modal__body">
+            <div class="logout-form">
+                <div class="logout-form__container">
+                    <div class="logout-form__header">
+                        <h1 class="logout-form__heading">Bạn có thực sự muốn đăng xuất</h1>
+                    </div>
+                    
+                    <div class="logout-form__controls">
+                        <button class="btn">Trở lại</button>
+                        <button class="btn">Có</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
 </body>
 </html>
