@@ -23,7 +23,7 @@
                     <div class="header-with-avatar">
                         <div class="header__user">
                             <img src="../assets/img/1.png" alt="avatar" class="header__avatar">
-                            <p class="header__username">Admin01</p>
+                            <p class="header__username" id="username"></p>
                             <i class="header__icon-down fa-solid fa-angle-down"></i>
     
                             <ul class="header__user-menu">
@@ -94,7 +94,7 @@
                                 <div class="info-lastlogin__info-header">
                                     <img src="../assets/img/1.png" alt="" class="info-lastlogin__img">
                                     <div class="info-lastlogin__name-label">
-                                        <h1 class="info-lastlogin__name">Admin 1</h1>
+                                        <h1 class="info-lastlogin__name" id="lastlogin_username"></h1>
                                         <p class="info-lastlogin__label">Admin</p>
                                     </div>
                                 </div>
@@ -213,14 +213,14 @@
                                         <th class="all-user-heading">Loại người dùng</th>
                                     </tr>
                                 </thead>
-                                <tbody class="all-user-tb__body">
-                                    <tr class="all-user-row">
+                                <tbody class="all-user-tb__body" id="listAccounts">
+                                    <!-- <tr class="all-user-row">
                                         <td class="all-user-data">tomcruise</td>
                                         <td class="all-user-data">Tom Cruise</td>
                                         <td class="all-user-data">02/03/2022</td>
                                         <td class="all-user-data">Học sinh</td>
-                                    </tr>
-                                    <tr class="all-user-row">
+                                    </tr > -->
+                                    <!-- <tr class="all-user-row">
                                         <td class="all-user-data">mattdamon</td>
                                         <td class="all-user-data">Matt Damon</td>
                                         <td class="all-user-data">03/03/2022</td>
@@ -279,7 +279,7 @@
                                         <td class="all-user-data">Matt Damon</td>
                                         <td class="all-user-data">03/03/2022</td>
                                         <td class="all-user-data">Admin</td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>
@@ -293,6 +293,7 @@
             <p class="footer">Copyright © 2022 all rights reserved</p>
         </footer>
     </div>
+    <script src="../js/admin/admin.js"></script>
     <!-- Modal layout -->
     <!-- <div class="modal">
         <div class="modal__overlay">

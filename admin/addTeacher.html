@@ -23,7 +23,7 @@
                     <div class="header-with-avatar">
                         <div class="header__user">
                             <img src="../assets/img/1.png" alt="avatar" class="header__avatar">
-                            <p class="header__username">Admin01</p>
+                            <p class="header__username" id="username"></p>
                             <i class="header__icon-down fa-solid fa-angle-down"></i>
     
                             <ul class="header__user-menu">
@@ -97,18 +97,30 @@
                                 </li>
                                 <li class="content-item">
                                     <p class="content-item__label">Tài khoản:</p>
-                                    <input type="text" class="content-item__input">
+                                    <input type="text" class="content-item__input" id="account_username">
                                 </li>
                                 <li class="content-item">
                                     <p class="content-item__label">Mật khẩu:</p>
-                                    <input type="text" class="content-item__input">
+                                    <input type="password" class="content-item__input" id="account_password">
                                 </li>
                                 <li class="content-item">
                                     <p class="content-item__label">Nhập lại mật khẩu:</p>
-                                    <input type="text" class="content-item__input">
+                                    <input type="password" class="content-item__input" id="re-pass" oninput="validate()">
                                 </li>
+                                <script>
+                                    function validate() {
+                                        var password = document.getElementById("account_password")
+                                        var rePassword = document.getElementById("re-pass")
+                                        if(password.value != rePassword.value) {
+                                            rePassword.style.color = 'red'
+                                        }
+                                        else {
+                                            rePassword.style.color = 'black'
+                                        }
+                                    }
+                                </script>
                             </ul>
-                            <button class="btn">Tạo</button>
+                            <button class="btn" onclick="addBtn()">Tạo</button>
                         </div>
                     </div>
                 </div>
@@ -120,6 +132,7 @@
             <p class="footer">Copyright © 2022 all rights reserved</p>
         </footer>
     </div>
+    <script src="../js/admin/addTeacher.js"></script>
     <!-- Modal layout -->
     <!-- <div class="modal">
         <div class="modal__overlay">

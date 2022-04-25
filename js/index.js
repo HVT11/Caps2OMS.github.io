@@ -1,28 +1,31 @@
 var accountApi = 'http://127.0.0.1:8000/account'
 
-let accounts = []
+function validate(){
+    getListAccounts(authentical)
+}
 
-fetch(accountApi)
-  .then(response => response.json())
-  .then(data => {
-      accounts = data.slice()
-      console.log(accounts)
-  });
 
-function validate() {
+//Function
+function getListAccounts(callback) {
+    fetch(accountApi)
+        .then(res => res.json())
+        .then(callback)
+}
+
+function authentical(listAccount) {
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
 
-    console.log(username, password)
-
     const flag = true
 
-    accounts.every(account => {
+    listAccount.every(account => {
         if(username == account.Username && password == account.Password && account.Type === '1') {
+            sessionStorage.setItem("username", account.Username);
             location.href="../admin/admin.html"
             flag = false
         }
         else if(username == account.Username && password == account.Password && account.Type === '2') {
+            sessionStorage.setItem("username", account.Username);
             location.href="../teacher/homeTeacher.html"
             flag = false
         }
@@ -33,3 +36,4 @@ function validate() {
         alert('Đăng nhập thất bại!!! Tài khoản hoặc mật khẩu sai')
     }
 }
+    
