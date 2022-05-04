@@ -22,16 +22,15 @@ function getListAccounts(callback) {
 }
 function renderListAccounts(listAccount) {
     var rowAccount = document.getElementById('listAccounts')
-    var htmls = listAccount.map(function(account){
+    var listAccountFiltered = listAccount.filter(account => account.Type != 1)
+    var htmls = listAccountFiltered.map(function(account){
         return `
             <tr class="all-user-row">
             <td class="all-user-data">${account.Username}</td>
-            <td class="all-user-data">${account.Username}</td>
             <td class="all-user-data">${account.Password}</td>
+            <td class="all-user-data">${account.DateCreate}</td>
             <td class="all-user-data">${
-                account.Type == "1" 
-                ? "Admin"
-                : account.Type == "2"
+                account.Type == "2"
                 ? "Giáo viên"
                 : "Học sinh"
             }</td>

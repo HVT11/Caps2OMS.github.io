@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../assets/styles/base.css">
     <link rel="stylesheet" href="../assets/styles/admin/admin.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1/css/all.min.css">
+    <script src="../js/base.js"></script>
 </head>
 <body>
     <div class="app">
@@ -34,7 +35,7 @@
                                     <a href="" class="">Đổi mật khẩu</a>
                                 </li>
                                 <li class="header__user-item">
-                                    <a href="" class="">Đăng xuất</a>
+                                    <div onclick="openFormLogout()">Đăng xuất</div>
                                 </li>
                             </ul>
                         </div>
@@ -79,10 +80,10 @@
                                     </a>
                                 </li>
                                 <li class="navbar-item">
-                                    <a href="" class="navbar-item__link">
+                                    <div class="navbar-item__link" onclick="openFormLogout()">
                                         <i class="navbar-item__icon fa-solid fa-right-from-bracket"></i>
                                         <p class="navbar-item__text">Đăng xuất</p>
-                                    </a>
+                                    </div>
                                 </li>
                             </ul>
                         </nav>
@@ -208,78 +209,13 @@
                                 <thead class="all-user-tb__head">
                                     <tr class="all-user-row">
                                         <th class="all-user-heading">Tên đăng nhập</th>
-                                        <th class="all-user-heading">Họ & tên</th>
+                                        <th class="all-user-heading">Mật khẩu</th>
                                         <th class="all-user-heading">Ngày tạo</th>
                                         <th class="all-user-heading">Loại người dùng</th>
                                     </tr>
                                 </thead>
                                 <tbody class="all-user-tb__body" id="listAccounts">
-                                    <!-- <tr class="all-user-row">
-                                        <td class="all-user-data">tomcruise</td>
-                                        <td class="all-user-data">Tom Cruise</td>
-                                        <td class="all-user-data">02/03/2022</td>
-                                        <td class="all-user-data">Học sinh</td>
-                                    </tr > -->
-                                    <!-- <tr class="all-user-row">
-                                        <td class="all-user-data">mattdamon</td>
-                                        <td class="all-user-data">Matt Damon</td>
-                                        <td class="all-user-data">03/03/2022</td>
-                                        <td class="all-user-data">Admin</td>
-                                    </tr>
-                                    <tr class="all-user-row">
-                                        <td class="all-user-data">vuvanhung</td>
-                                        <td class="all-user-data">02/03/2022</td>
-                                        <td class="all-user-data">02/03/2022</td>
-                                        <td class="all-user-data">02/03/2022</td>
-                                    </tr>
-                                    <tr class="all-user-row">
-                                        <td class="all-user-data">vansyhung</td>
-                                        <td class="all-user-data">02/03/2022</td>
-                                        <td class="all-user-data">02/03/2022</td>
-                                        <td class="all-user-data">02/03/2022</td>
-                                    </tr>
-                                    <tr class="all-user-row">
-                                        <td class="all-user-data">mattdamon</td>
-                                        <td class="all-user-data">Matt Damon</td>
-                                        <td class="all-user-data">03/03/2022</td>
-                                        <td class="all-user-data">Admin</td>
-                                    </tr>
-                                    <tr class="all-user-row">
-                                        <td class="all-user-data">mattdamon</td>
-                                        <td class="all-user-data">Matt Damon</td>
-                                        <td class="all-user-data">03/03/2022</td>
-                                        <td class="all-user-data">Admin</td>
-                                    </tr>
-                                    <tr class="all-user-row">
-                                        <td class="all-user-data">mattdamon</td>
-                                        <td class="all-user-data">Matt Damon</td>
-                                        <td class="all-user-data">03/03/2022</td>
-                                        <td class="all-user-data">Admin</td>
-                                    </tr>
-                                    <tr class="all-user-row">
-                                        <td class="all-user-data">mattdamon</td>
-                                        <td class="all-user-data">Matt Damon</td>
-                                        <td class="all-user-data">03/03/2022</td>
-                                        <td class="all-user-data">Admin</td>
-                                    </tr>
-                                    <tr class="all-user-row">
-                                        <td class="all-user-data">mattdamon</td>
-                                        <td class="all-user-data">Matt Damon</td>
-                                        <td class="all-user-data">03/03/2022</td>
-                                        <td class="all-user-data">Admin</td>
-                                    </tr>
-                                    <tr class="all-user-row">
-                                        <td class="all-user-data">mattdamon</td>
-                                        <td class="all-user-data">Matt Damon</td>
-                                        <td class="all-user-data">03/03/2022</td>
-                                        <td class="all-user-data">Admin</td>
-                                    </tr>
-                                    <tr class="all-user-row">
-                                        <td class="all-user-data">mattdamon</td>
-                                        <td class="all-user-data">Matt Damon</td>
-                                        <td class="all-user-data">03/03/2022</td>
-                                        <td class="all-user-data">Admin</td>
-                                    </tr> -->
+                                    <!-- Render data here -->
                                 </tbody>
                             </table>
                         </div>
@@ -295,7 +231,7 @@
     </div>
     <script src="../js/admin/admin.js"></script>
     <!-- Modal layout -->
-    <!-- <div class="modal">
+    <div class="modal" id="modal-logOut">
         <div class="modal__overlay">
         </div>
         <div class="modal__body">
@@ -306,12 +242,12 @@
                     </div>
                     
                     <div class="logout-form__controls">
-                        <button class="btn">Trở lại</button>
-                        <button class="btn">Có</button>
+                        <button class="btn" onclick="cancelLogout()">Trở lại</button>
+                        <button class="btn" onclick="yesLogout()">Có</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
 </body>
 </html>

@@ -1,0 +1,160 @@
+.class-info__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.class-info__item {
+    display: flex;
+    align-items: center;
+}
+
+.class-info__title {
+    font-size: 1.8rem;
+    margin-right: 6px;
+}
+
+.class-info__content {
+    font-size: 1.6rem;
+}
+
+.separate {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.line {
+    width: 50%;
+    border-bottom: 1px dashed #888;
+}
+
+.body-content-tbl__heading {
+    text-align: center;
+}
+
+.tb-student {
+    margin-top: 20px;
+    width: 100%;
+    font-size: 1.4rem;
+}
+
+.tb-student__head {
+    text-align: left;
+}
+
+.tb-student-heading {
+    transform: translateX(-1px);
+}
+
+.tb-student-data {
+    padding: 6px 0;
+}
+
+.tb-options {
+   display: flex;
+   justify-content: space-around;
+}
+
+.options-icon:hover {
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.addStudent-form__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 450px;
+    height: 150px;
+}
+
+.addStudent-form__input {
+    font-size: 1.4rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.addClass-form__controls {
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.form__container--disable {
+    display: none;
+}
+
+.success-form__container{
+    width: 400px;
+    padding: 10px;
+    text-align: center;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.success-form__container--enable {
+    display: flex;
+}
+
+/* Modal delete */
+.delete-form {
+    width: 400px;
+    padding: 10px;
+    line-height: 2rem;
+}
+
+.delete-form__container {
+    text-align: center;
+}
+
+.delete-form__controls {
+    display: flex;
+    justify-content: space-around;
+}
+
+.changePass-form {
+    width: 400px;
+    padding: 10px;
+}
+
+.changePass-form__container {
+    text-align: center;
+}
+
+.changePass-form__input-list {
+    list-style: none;
+    font-size: 1.4rem;
+    padding: 0;
+}
+
+.changePass-form__input-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 6px 20px;
+    align-items: center;
+}
+
+.changePass__text {
+    margin: 0;
+}
+
+.changePass__input {
+    font-size: 1.6rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.changePass__input:focus {
+    outline: 2px solid var(--primary-color);
+}
+
+.changePass-form__controls {
+    margin: 6px 0; 
+    display: flex;
+    justify-content: space-around;
+}

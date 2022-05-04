@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../assets/styles/base.css">
     <link rel="stylesheet" href="../assets/styles/admin/content.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1/css/all.min.css">
+    <script src="../js/base.js"></script>
 </head>
 <body>
     <div class="app">
@@ -93,7 +94,7 @@
                             <ul class="content-list">
                                 <li class="content-item">
                                     <p class="content-item__label">Tên giáo viên:</p>
-                                    <input type="text" class="content-item__input">
+                                    <input type="text" class="content-item__input" id="teacherName">
                                 </li>
                                 <li class="content-item">
                                     <p class="content-item__label">Tài khoản:</p>
@@ -132,13 +133,13 @@
             <p class="footer">Copyright © 2022 all rights reserved</p>
         </footer>
     </div>
-    <script src="../js/admin/addTeacher.js"></script>
+    
     <!-- Modal layout -->
-    <!-- <div class="modal">
+    <div class="modal" id="modal-Form">
         <div class="modal__overlay">
         </div>
         <div class="modal__body">
-            <div class="notify-form"> -->
+            <div class="notify-form">
                 <!-- Add teacher failure -->
                 <!-- <div class="notify-form__container notify-form__container--failure">
                     <div class="notify-form__header">
@@ -151,7 +152,7 @@
                     </div>
                 </div> -->
                 <!-- Add teacher success -->
-                <!-- <div class="notify-form__container notify-form__container--success">
+                <div class="notify-form__container">
                     <div class="notify-form__header">
                         <h1 class="notify-form__heading">Thêm giáo viên thành công</h1>
                     </div>
@@ -159,20 +160,39 @@
                     <ul class="notify-form__account-list">
                         <li class="notify-form__account-item">
                             <p class="account-item__label">Tên tài khoản:</p>
-                            <p class="account-item__label">vythithutrinh</p>
+                            <p class="account-item__label" id="teacherUsername">vythithutrinh</p>
                         </li>
                         <li class="notify-form__account-item">
                             <p class="account-item__label">Mật khẩu:</p>
-                            <p class="account-item__label">123456</p>
+                            <p class="account-item__label" id="teacherPass">123456</p>
                         </li>
                     </ul>
 
                     <div class="notify-form__controls">
-                        <button class="btn notify-form__controls-btn">Trở lại</button>
+                        <button class="btn notify-form__controls-btn" onclick="cancelBtn()">Trở lại</button>
                     </div>
-                </div> -->
-            <!-- </div>
+                </div>
+            </div>
         </div>
-    </div> -->
+    </div>
+    <div class="modal" id="modal-logOut">
+        <div class="modal__overlay">
+        </div>
+        <div class="modal__body">
+            <div class="logout-form">
+                <div class="logout-form__container">
+                    <div class="logout-form__header">
+                        <h1 class="logout-form__heading">Bạn có thực sự muốn đăng xuất</h1>
+                    </div>
+                    
+                    <div class="logout-form__controls">
+                        <button class="btn" onclick="cancelLogout()">Trở lại</button>
+                        <button class="btn" onclick="yesLogout()">Có</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/admin/addTeacher.js"></script>
 </body>
 </html>

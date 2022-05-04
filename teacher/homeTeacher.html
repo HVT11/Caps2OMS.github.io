@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../assets/styles/base.css">
     <link rel="stylesheet" href="../assets/styles/teacher/homeTeacher.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1/css/all.min.css">
+    <script src="../js/base.js"></script>
 </head>
 <body>
     <div class="app">
@@ -23,7 +24,7 @@
                     <div class="header-with-avatar">
                         <div class="header__user">
                             <img src="../assets/img/1.png" alt="avatar" class="header__avatar">
-                            <p class="header__username">Hoàng</p>
+                            <p class="header__username" id="username"></p>
                             <i class="header__icon-down fa-solid fa-angle-down"></i>
     
                             <ul class="header__user-menu">
@@ -34,7 +35,7 @@
                                     <a href="" class="">Đổi mật khẩu</a>
                                 </li>
                                 <li class="header__user-item">
-                                    <a href="" class="">Đăng xuất</a>
+                                    <div onclick="openFormLogout()">Đăng xuất</div>
                                 </li>
                             </ul>
                         </div>
@@ -70,7 +71,7 @@
                                             <i class="fa-solid fa-filter"></i>
                                             <span>Bộ lọc</span>
                                         </button>
-                                        <button class="btn controls__btn-add">
+                                        <button class="btn controls__btn-add" onclick="openForm()">
                                             <i class="fa-solid fa-plus"></i>
                                             <span>Thêm lớp mới</span>
                                         </button>
@@ -79,7 +80,21 @@
                             </div>
 
                             <div class="body-content-tbl">
-
+                                <table class="tb-class">
+                                    <thead class="tb-class__head">
+                                        <tr class="tb-class-row">
+                                            <th class="tb-class-heading">Mã lớp</th>
+                                            <th class="tb-class-heading">Tên lớp</th>
+                                            <th class="tb-class-heading">Lịch học</th>
+                                            <th class="tb-class-heading">Sĩ số</th>
+                                            <th class="tb-class-heading">Ngày tạo</th>
+                                            <th class="tb-class-heading tb-options"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="tb-class__body" id="listClass">
+                                        
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -92,8 +107,9 @@
             <p class="footer">Copyright © 2022 all rights reserved</p>
         </footer>
     </div>
+    <script src="../js/teacher/homeTeacher.js"></script>
     <!-- Modal layout -->
-    <!-- <div class="modal">
+    <div class="modal" id="modal-logOut">
         <div class="modal__overlay">
         </div>
         <div class="modal__body">
@@ -104,12 +120,62 @@
                     </div>
                     
                     <div class="logout-form__controls">
-                        <button class="btn">Trở lại</button>
-                        <button class="btn">Có</button>
+                        <button class="btn" onclick="cancelLogout()">Trở lại</button>
+                        <button class="btn" onclick="yesLogout()">Có</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div> -->
+    </div>
+    <div class="modal" id="modal-Form">
+        <div class="modal__overlay">
+        </div>
+        <div class="modal__body">
+            <div class="addClass-form">
+                <!-- Add class -->
+                <div class="addClass-form__container" id="addClass">
+                    <div class="addClass-form__header">
+                        <h1 class="addClass-form__heading">Tạo lớp mới</h1>
+                    </div>
+                    
+                    <div class="addClass-form__input">
+                        <ul class="addClass-form__input-list">
+                            <li class="addClass-form__input-item">
+                                <p class="addClass__text">Mã lớp:</p>
+                                <input type="text" class="addClass__input" id="classCode">
+                            </li>
+                            <li class="addClass-form__input-item">
+                                <p class="addClass__text">Tên lớp:</p>
+                                <input type="text" class="addClass__input" id="className">
+                            </li>
+                            <li class="addClass-form__input-item">
+                                <p class="addClass__text">Lịch học:</p>
+                                <input type="text" class="addClass__input" id="schedule">
+                            </li>
+                            <li class="addClass-form__input-item">
+                                <p class="addClass__text">Sĩ số:</p>
+                                <input type="text" class="addClass__input" id="totalStu">
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="addClass-form__controls">
+                        <button class="btn" onclick="cancelBtn()">Thoát</button>
+                        <button class="btn" onclick="addClass()">Tạo mới</button>
+                    </div>
+                </div>
+
+                <!-- Success -->
+                <div class="success-form__container" id="addClassSuccess">
+                    <div class="addClass-form__header">
+                        <h1 class="addClass-form__heading">Tạo lớp mới thành công</h1>
+                    </div>                    
+                    <div class="addClass-form__controls">
+                        <button class="btn" onclick="cancelBtnReload()">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
