@@ -283,7 +283,7 @@ html {
 
 /* Tab button */
 .tabBtn {
-    width: 120px;
+    width: 130px;
     padding: 4px;
     font-size: 1.2rem;
     color: var(--black-color);
@@ -385,6 +385,7 @@ html {
 }
 
 .body-heading {
+    height: 51px;
     width: 90%;
     text-align: center;
     background-color: var(--background-color);
@@ -396,6 +397,7 @@ html {
 }
 
 .body-content {
+    height: 545px;
     margin-top: 5px;
     padding: 10px;
     width: 90%;
@@ -431,7 +433,7 @@ html {
 }
 
 .controls__btn {
-    width: 300px;
+    width: 350px;
     display: flex;
     justify-content: space-between;
 }
@@ -452,3 +454,38 @@ html {
     width: 150px;
 }
 
+/* Class Info */
+.class-info__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.class-info__item {
+    display: flex;
+    align-items: center;
+}
+
+.class-info__title {
+    font-size: 1.8rem;
+    margin-right: 6px;
+}
+
+.class-info__content {
+    font-size: 1.6rem;
+}
+
+.separate {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.line {
+    width: 50%;
+    border-bottom: 1px dashed #888;
+}
+
+.body-content-tbl__heading {
+    text-align: center;
+}

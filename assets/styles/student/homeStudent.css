@@ -1,0 +1,11 @@
+.tb-attendance {
+    margin-top: 16px;
+    width: 100%;
+    text-align: left;
+    font-size: 1.4rem;
+}
+
+.tb-attendance-data {
+    width: calc(100% / 4);
+    padding: 10px 0;
+}

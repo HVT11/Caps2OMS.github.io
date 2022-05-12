@@ -27,6 +27,11 @@ function authentical(listAccount) {
             location.href="../teacher/homeTeacher.html"
             flag = false
         }
+        else if(username == account.Username && password == account.Password && account.Type === '3') {
+            sessionStorage.setItem("username", account.Username);
+            location.href="../student/homeStudent.html"
+            flag = false
+        }
         return flag
     })
 

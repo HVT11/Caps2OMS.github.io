@@ -3,6 +3,8 @@ var accountApi = 'http://127.0.0.1:8000/account'
 var teacherApi = 'http://127.0.0.1:8000/teacher'
 var classApi = 'http://127.0.0.1:8000/class'
 var studentApi = 'http://127.0.0.1:8000/student'
+var listAttendanceApi = 'http://127.0.0.1:8000/listattendance'
+var attendanceApi = 'http://127.0.0.1:8000/attendance'
 
 //Function
 function openForm() {
@@ -50,6 +52,18 @@ function cancelDelete() {
     modal.classList.remove("modal--active")
 }
 
+function successClose() {
+    var modal = document.getElementById("modal-delete")
+    modal.classList.remove("modal--active")
+    
+    var addSuccess = document.getElementById("formSuccess")
+    addSuccess.classList.remove("success-form__container--enable")
+    
+    var deleteStudent = document.getElementById("deleteStudent")
+    deleteStudent.classList.remove("form__container--disable")
+
+}
+
 // Form ChangePassword
 function openChangePass(username) {
     sessionStorage.setItem("user_changePass",username)
@@ -64,4 +78,15 @@ function cancelChangePass() {
 
     document.getElementById("newPass").value = ""
     document.getElementById("re_newPass").value = ""
+}
+
+// OpenAttendance 
+function openAttendance() {
+    var modal = document.getElementById("modal-addAttendance")
+    modal.classList.add("modal--active")
+}
+
+function closeAttendance() {
+    var modal = document.getElementById("modal-addAttendance")
+    modal.classList.remove("modal--active")
 }

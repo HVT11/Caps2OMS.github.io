@@ -5,6 +5,7 @@ function start() {
     var header_username = document.getElementById("username")
     header_username.innerHTML = userName
     getStudents(renderListStudent)
+    getListAttendance(renderListAttendance)
 }
 
 start()
@@ -42,6 +43,12 @@ function getStudents(callback) {
             .then(callback)
 }
 
+function getListAttendance(callback) {
+    fetch(listAttendanceApi)
+            .then(res => res.json())
+            .then(callback)
+}
+
 function renderListStudent(listStudent){
     var rowStudent = document.getElementById("listStudent")
     var filterStudent = listStudent.filter(student => student.ClassID == ClassID)
@@ -50,7 +57,11 @@ function renderListStudent(listStudent){
         <tr class="tb-student-row">
             <td class="tb-student-data">${student.Username}</td>
             <td class="tb-student-data">${student.Name}</td>
-            <td class="tb-student-data">${student.StudentCode}</td>
+            <td class="tb-student-data">
+                ${
+                    student.StudentCode == null ? "" : student.StudentCode
+                }
+            </td>
             <td class="tb-student-data">
                 ${
                     student.Gentle == "1"
@@ -58,8 +69,16 @@ function renderListStudent(listStudent){
                     : "Nữ"
                 }
             </td>
-            <td class="tb-student-data">${student.DateOfBirth}</td>
-            <td class="tb-student-data">${student.Email}</td>
+            <td class="tb-student-data">
+                ${
+                    student.DateOfBirth == null ? "" : student.DateOfBirth
+                }
+            </td>
+            <td class="tb-student-data">
+                ${
+                    student.Email == null ? "" : student.Email
+                }
+            </td>
             <td class="tb-student-data tb-options">
                 <i class="options-icon fa-solid fa-pen-to-square" onclick ="openChangePass(${student.Username})"></i>
                 <i class="options-icon fa-solid fa-trash-can" onclick ="openDelete(${student.StudentID}, ${student.Username})"></i>
@@ -69,6 +88,29 @@ function renderListStudent(listStudent){
     })
 
     rowStudent.innerHTML = htmls.join("")
+}  
+
+function renderListAttendance(listAttendance){
+    var rowAttendance = document.getElementById("listAttendance")
+    var filterStudent = listAttendance.filter(element => element.ClassID == ClassID)
+    var htmls = filterStudent.map((attendance) => {
+        return `
+        <tr class="tb-student-row">
+            <td class="tb-student-data attendance-link" onclick="moveToAttendance(${attendance.ListAttendanceID})">${attendance.Date}</td>
+            <td class="tb-student-data">${attendance.Time.slice(0,5)}</td>
+            <td class="tb-student-data">
+                ${
+                    attendance.Total == null ? "" : attendance.Total
+                }
+            </td>
+            <td class="tb-student-data tb-options">
+                <i class="options-icon fa-solid fa-trash-can" onclick ="openDelete()"></i>
+            </td>
+        </tr>
+        `
+    })
+
+    rowAttendance.innerHTML = htmls.join("")
 }   
 
 
@@ -103,10 +145,10 @@ function addStudent(Username, Password, Name) {
     var formData2 = {
         Name: Name,
         Gentle: "1",
-        StudentCode: "null",
+        StudentCode: null,
         DateOfBirth: null,
-        Email: "null",
-        Avatar: "null",
+        Email: null,
+        Avatar: null,
         Username: Username,
         ClassID: parseInt(ClassID)
     }
@@ -136,6 +178,32 @@ function postStudent(data) {
     fetch(studentApi, options)
 }
 
+function addListAttendance() {
+    var formData = {
+        Date: "",
+        Time: "",
+        Total: null,
+        ClassID: ClassID
+    }
+
+    postListAttendance(formData)
+
+    document.getElementById('modal-addAttendance').classList.remove('modal--active')
+
+    getListAttendance(renderListAttendance)
+}
+
+function postListAttendance(data) {
+    var options = {
+        header:{
+            'Content-type': 'application/json',
+        },
+        method: "POST",
+        body: JSON.stringify(data)
+    }
+    fetch(listAttendanceApi, options)
+}
+
 
 // Funtion Modal Success
 function notifyAddSuccess() {
@@ -163,9 +231,11 @@ function deleteStu() {
 
     deleteStudent(StudentID)
 
-    findAccountByUsername()  
-    
+    findAccountByUsername()
+
     setTimeout(() => notifyDeleteSuccess(),2000)
+
+    setTimeout(() => getStudents(renderListStudent),3000)
 }
 function deleteStudent(StudentID) {
     var options = {
@@ -211,7 +281,7 @@ function changePassword() {
     
     putAccount(formData)
 
-    cancelChangePass()
+    
 
     Password.value = ''
     document.getElementById("re_newPass").value = ''
@@ -227,3 +297,20 @@ function putAccount(data) {
     }
     fetch(accountApi, options)
 }
+
+
+//Button function
+function moveTabAttend() {
+    document.getElementById('attend-tab').classList.add('tabBtn--enable')
+    document.getElementById('student-tab').classList.remove('tabBtn--enable')
+    document.getElementById('list-attendance-tab').style.display = 'block'
+    document.getElementById('list-student-tab').style.display = 'none'
+}
+
+function moveTabStu() {
+    document.getElementById('attend-tab').classList.remove('tabBtn--enable')
+    document.getElementById('student-tab').classList.add('tabBtn--enable')
+    document.getElementById('list-attendance-tab').style.display = 'none'
+    document.getElementById('list-student-tab').style.display = 'block'
+}
+

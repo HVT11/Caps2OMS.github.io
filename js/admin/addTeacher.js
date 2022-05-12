@@ -23,9 +23,9 @@ function addBtn(){
     var teacherName = document.getElementById("teacherName").value
     var formData2 = {
         Name: teacherName,
-        Email: "null",
-        Phone: "null",
-        Avatar: "null",
+        Email: null,
+        Phone: null,
+        Avatar: null,
         Username: username
     }
 

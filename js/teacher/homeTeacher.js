@@ -27,14 +27,12 @@ function getListClassByTeacherID(teacherID){
 }
 
 getListTeacher()
-    .then(function(listTeacher){
+    .then(async function(listTeacher){
         var teacherID = (listTeacher.find(teacher => teacher.Username == userName)).TeacherID
         sessionStorage.setItem("teacherID",teacherID)
 
-        return getListClassByTeacherID(teacherID)
-            .then(function(result){
-                return(result)
-            })
+        const result = await getListClassByTeacherID(teacherID)
+        return (result)
     })
     .then(function(data){
         var rowClass = document.getElementById('listClass')

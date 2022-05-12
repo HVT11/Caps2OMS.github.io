@@ -1,36 +1,5 @@
-.class-info__list {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.class-info__item {
-    display: flex;
-    align-items: center;
-}
-
-.class-info__title {
-    font-size: 1.8rem;
-    margin-right: 6px;
-}
-
-.class-info__content {
-    font-size: 1.6rem;
-}
-
-.separate {
-    display: flex;
-    justify-content: center;
-    margin: 10px 0;
-}
-
-.line {
-    width: 50%;
-    border-bottom: 1px dashed #888;
-}
-
-.body-content-tbl__heading {
-    text-align: center;
+#list-attendance-tab {
+    display: none;
 }
 
 .tb-student {
@@ -49,6 +18,14 @@
 
 .tb-student-data {
     padding: 6px 0;
+}
+
+.attendance-link {
+    cursor: pointer;
+}
+
+.attendance-link:hover {
+    color: var(--primary-color);
 }
 
 .tb-options {
