@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCMS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
+    <link rel="stylesheet" href="../assets/styles/base.css">
+    <link rel="stylesheet" href="../assets/styles/teacher/classManager.css">
+    <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1/css/all.min.css">
+    <script src="../js/base.js"></script>
+</head>
+<body>
+    <div class="app">
+        <div class="app__header">
+            <div class="grid">
+                <div class="header">
+                    <div class="header-with-avatar">
+                        <img src="../assets/img/icon.png" alt="" class="header__icon">
+                        <h2 class="header__software-name">Online Classroom 
+                        </br> Management Support Tool</h2>
+                    </div>
+                    <div class="header-with-avatar">
+                        <div class="header__user">
+                            <img src="../assets/img/1.png" alt="avatar" class="header__avatar">
+                            <p class="header__username" id="username"></p>
+                            <i class="header__icon-down fa-solid fa-angle-down"></i>
+    
+                            <ul class="header__user-menu">
+                                <li class="header__user-item">
+                                    <a href="" class="">Thông tin cá nhân</a>
+                                </li>
+                                <li class="header__user-item">
+                                    <a href="" class="">Đổi mật khẩu</a>
+                                </li>
+                                <li class="header__user-item">
+                                    <div onclick="openFormLogout()">Đăng xuất</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="app__container">
+            <div class="grid">
+                <div class="grid__row">
+                    <div class="main-container">
+                        <div class="body-heading">
+                            <h1 class="body-heading-title" id="classCode"></h1>
+                        </div>
+    
+                        <div class="body-content">
+                            <div class="body-content__header">
+                                <div class="navigation">
+                                    <a href="./homeTeacher.html" class="navigation-link">
+                                        <i class="fa-solid fa-circle-left"></i>
+                                    </a>
+                                    <p class="navigation-item">Danh sách > Chi tiết</p>
+                                </div>
+                            </div>
+
+                            <div class="class-info__list">
+                                <div class="class-info__item">
+                                    <h4 class="class-info__title">Tên lớp:</h4>
+                                    <p class="class-info__content" id="className"></p>
+                                </div>
+                                <div class="class-info__item">
+                                    <h4 class="class-info__title">Lịch học:</h4>
+                                    <p class="class-info__content" id="schedule"></p>
+                                </div>
+                                <div class="class-info__item">
+                                    <h4 class="class-info__title">Sĩ số:</h4>
+                                    <p class="class-info__content" id="totalStu"></p>
+                                </div>
+                            </div>
+
+                            <div class="tab-controls">
+                                <button class="tabBtn tabBtn--enable" id="student-tab" onclick="moveTabStu()">Danh sách học sinh</button>
+                                <button class="tabBtn" id="attend-tab"  onclick="moveTabAttend()">Danh sách điểm danh</button>
+                            </div>
+
+                            <div class="separate">
+                                <div class="line"></div>
+                            </div>
+
+                            <!-- List student -->
+                            <div class="body-content-tbl">
+                                <div id="list-student-tab">
+                                    <h1 class="body-content-tbl__heading">Danh sách học sinh</h1>
+                                    <div class="controls">
+                                        <div class="controls__search">
+                                            <input type="text" class="controls__search-inp" placeholder="Tìm kiếm">
+                                            <i class="controls__search-icon fa-solid fa-circle-xmark"></i>
+                                        </div>
+        
+                                        <div class="controls__btn">
+                                            <button href="" class="controls__btn-tb">
+                                                <i class="fa-solid fa-arrow-up-short-wide"></i>
+                                                <span>Sắp xếp</span>
+                                            </button>
+                                            <button href="" class="controls__btn-tb">
+                                                <i class="fa-solid fa-filter"></i>
+                                                <span>Bộ lọc</span>
+                                            </button>
+                                            <button class="btn controls__btn-add" onclick="openForm()">
+                                                <i class="fa-solid fa-plus"></i>
+                                                <span>Thêm học sinh</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <table class="tb-student">
+                                        <thead class="tb-student__head">
+                                            <tr class="tb-student-row">
+                                                <th class="tb-student-heading">Tên đăng nhập</th>
+                                                <th class="tb-student-heading">Họ và tên</th>
+                                                <th class="tb-student-heading">Mã sinh viên</th>
+                                                <th class="tb-student-heading">Giới tính</th>
+                                                <th class="tb-student-heading">Ngày sinh</th>
+                                                <th class="tb-student-heading">Email</th>
+                                                <th class="tb-student-heading tb-options"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="tb-student__body" id="listStudent">
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- List attendance history -->
+
+                            <div id="list-attendance-tab">
+                                <h1 class="body-content-tbl__heading">Danh sách điểm danh</h1>
+                                <div class="controls">
+                                    <div class="controls__search">
+                                        <input type="text" class="controls__search-inp" placeholder="Tìm kiếm">
+                                        <i class="controls__search-icon fa-solid fa-circle-xmark"></i>
+                                    </div>
+    
+                                    <div class="controls__btn">
+                                        <button href="" class="controls__btn-tb">
+                                            <i class="fa-solid fa-arrow-up-short-wide"></i>
+                                            <span>Sắp xếp</span>
+                                        </button>
+                                        <button href="" class="controls__btn-tb">
+                                            <i class="fa-solid fa-filter"></i>
+                                            <span>Bộ lọc</span>
+                                        </button>
+                                        <button class="btn controls__btn-add" onclick="openAttendance()">
+                                            <i class="fa-solid fa-plus"></i>
+                                            <span>Điểm danh</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <table class="tb-student">
+                                    <thead class="tb-student__head">
+                                        <tr class="tb-student-row">
+                                            <th class="tb-student-heading">Ngày</th>
+                                            <th class="tb-student-heading">Giờ</th>
+                                            <th class="tb-student-heading">Có mặt</th>
+                                            <th class="tb-student-heading tb-options"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="tb-student__body" id="listAttendance">
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="app__footer">
+            <p>This is the product to be demo not product to be sell</p>
+            <p class="footer">Copyright © 2022 all rights reserved</p>
+        </footer>
+    </div>
+    <!-- <script src="../js/teacher/homeTeacher.js"></script> -->
+    <!-- Modal layout -->
+    <div class="modal" id="modal-logOut">
+        <div class="modal__overlay">
+        </div>
+        <div class="modal__body">
+            <div class="logout-form">
+                <div class="logout-form__container">
+                    <div class="logout-form__header">
+                        <h1 class="logout-form__heading">Bạn có thực sự muốn đăng xuất</h1>
+                    </div>
+                    
+                    <div class="logout-form__controls">
+                        <button class="btn" onclick="cancelLogout()">Trở lại</button>
+                        <button class="btn" onclick="yesLogout()">Có</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modal-Form">
+        <div class="modal__overlay">
+        </div>
+        <div class="modal__body">
+            <div class="addStudent-form">
+                <!-- Add class -->
+                <div class="addStudent-form__container" id="addStudent">
+                    <div class="addStudent-form__header">
+                        <h1 class="addStudent-form__heading">Thêm học sinh</h1>
+                    </div>
+                    
+                    <div class="addStudent-form__input">
+                        <p class="addStudent-form__text" class="addStudent__input">Danh sách học sinh:</p>
+                        <input type="file" name="" id="uploadFile" accept=".csv" class="addStudent-form__file">
+                    </div>    
+                    
+                    <div class="addClass-form__controls">
+                        <button class="btn" onclick="cancelBtn()">Thoát</button>
+                        <button class="btn" onclick="addListStudent()">Thêm</button>
+                    </div>
+                </div>
+
+                <!-- Success -->
+                <div class="success-form__container" id="addStudentSuccess">
+                    <div class="addClass-form__header">
+                        <h1 class="addClass-form__heading">Thêm danh sách học sinh thành công</h1>
+                    </div>                    
+                    <div class="addClass-form__controls">
+                        <button class="btn" onclick="cancelBtnReload()">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modal-delete">
+        <div class="modal__overlay">
+        </div>
+        <div class="modal__body">
+            <div class="delete-form">
+                <div class="delete-form__container" id="deleteStudent">
+                    <div class="delete-form__header">
+                        <h1 class="delete-form__heading">Bạn có thực sự muốn xoá học sinh này khỏi lớp</h1>
+                    </div>
+                    
+                    <div class="delete-form__controls">
+                        <button class="btn" onclick="cancelDelete()">Trở lại</button>
+                        <button class="btn" onclick="deleteStu()">Xoá</button>
+                    </div>
+                </div>
+                <!-- Success -->
+                <div class="success-form__container" id="formSuccess">
+                    <div class="addClass-form__header">
+                        <h1 class="addClass-form__heading">Xoá thành công</h1>
+                    </div>                    
+                    <div class="addClass-form__controls">
+                        <button class="btn" onclick="successClose()">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modal-addAttendance">
+        <div class="modal__overlay">
+        </div>
+        <div class="modal__body">
+            <div class="delete-form">
+                <div class="delete-form__container" id="deleteStudent">
+                    <div class="delete-form__header">
+                        <h1 class="delete-form__heading">Bạn muốn tạo một danh sách điểm danh mới</h1>
+                    </div>
+                    
+                    <div class="delete-form__controls">
+                        <button class="btn" onclick="closeAttendance()">Trở lại</button>
+                        <button class="btn" onclick="addListAttendance()">Tạo mới</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modal-changePass">
+        <div class="modal__overlay">
+        </div>
+        <div class="modal__body">
+            <div class="changePass-form">
+                <div class="changePass-form__container">
+                    <div class="changePass-form__header">
+                        <h1 class="changePass-form__heading">Thay đổi mật khẩu</h1>
+                    </div>
+                    <div class="changePass-form__input">
+                        <ul class="changePass-form__input-list">
+                            <li class="changePass-form__input-item">
+                                <p class="changePass__text">Mật khẩu mới</p>
+                                <input type="password" class="changePass__input" id="newPass">
+                            </li>
+                            <li class="changePass-form__input-item">
+                                <p class="changePass__text">Nhập lại mật khẩu</p>
+                                <input type="password" class="changePass__input" id="re_newPass" oninput="checkRePass()">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="changePass-form__controls">
+                        <button class="btn" onclick="cancelChangePass()" >Trở lại</button>
+                        <button class="btn" onclick="changePassword()" id="changePassBtn" disabled="true">Đổi mật khẩu</button>
+                    </div>
+                    <script>
+                        function checkRePass() {
+                            var password = document.getElementById("newPass")
+                            var rePassword = document.getElementById("re_newPass")
+                            var btn = document.getElementById("changePassBtn")
+
+                            if(password.value != rePassword.value) {
+                                rePassword.style.cssText = "color: red; outline:2px solid red;"
+                                btn.disabled = true
+                                btn.style.cssText = "background-color: #999; cursor: default; box-shadow: none"
+                            }
+                            else 
+                            {
+                                rePassword.style.cssText = "color: var(--black-color); outline: none;"
+                                btn.disabled = false
+                                btn.style.cssText = "background-color: var(--primary-color); cursor: pointer; "
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+    <script src="../js/teacher/classManager.js"></script>
+</body>
+</html>

@@ -140,6 +140,11 @@ html {
     color: violet;
 }
 
+.header__user-item:hover {
+    color: violet;
+    cursor: pointer;
+}
+
 .header__icon {
     width: 50px;
     margin-right: 6px;
@@ -206,6 +211,11 @@ html {
     left: 0;
     display: flex;
     animation: fadeIn linear 0.1s;
+    visibility: hidden;
+}
+
+.modal--active {
+    visibility: visible;
 }
 
 .modal__overlay {
@@ -256,7 +266,7 @@ html {
 
 /* Button */
 .btn {
-    width: 100px;
+    min-width: 110px;
     padding: 4px;
     font-size: 1.6rem;
     color: var(--white-color);
@@ -269,6 +279,28 @@ html {
 
 .btn:hover {
     box-shadow: none;
+}
+
+/* Tab button */
+.tabBtn {
+    width: 130px;
+    padding: 4px;
+    font-size: 1.2rem;
+    color: var(--black-color);
+    background-color: transparent;
+    border: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 0 2px ;
+}
+
+.tabBtn--enable {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
+
+.tabBtn--disable {
+    background-color: transparent;
 }
 
 /* Navbar */
@@ -321,4 +353,139 @@ html {
 
 .navbar-item__text {
     font-size: 1.3rem;
+}
+
+/* Navigation */
+.navigation {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.navigation-link {
+    font-size: 2rem;
+    margin-right: 5px;
+    color: var(--primary-color);
+}
+
+.navigation-item {
+    font-size: 1.2rem;
+    margin: 0;
+    color: var(--black-color);
+    transform: translateY(1px);
+}
+
+/* Body */
+.main-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.body-heading {
+    height: 51px;
+    width: 90%;
+    text-align: center;
+    background-color: var(--background-color);
+    border-radius: 10px;
+}
+
+.body-heading-title {
+    font-size: 2.6rem;
+}
+
+.body-content {
+    height: 545px;
+    margin-top: 5px;
+    padding: 10px;
+    width: 90%;
+    background-color: var(--background-color);
+    border-radius: 10px;
+}
+
+/* Controls */
+.controls{
+    display: flex;
+    justify-content: space-between;
+}
+
+.controls__search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 240px;
+    background-color: var(--white-color);
+    border-radius: 10px;
+    padding: 6px 10px;
+    
+}
+
+.controls__search-inp {
+    border: none;
+    outline-color: transparent;
+    font-size: 1.4rem;
+}
+
+.controls__search-icon {
+    font-size: 1.8rem;
+}
+
+.controls__btn {
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.controls__btn-tb {
+    font-size: 1.2rem;
+    border: none;
+    color: var(--black-color);
+    background-color: transparent;
+}
+
+.controls__btn-tb:hover {
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.controls__btn-add {
+    width: 150px;
+}
+
+/* Class Info */
+.class-info__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.class-info__item {
+    display: flex;
+    align-items: center;
+}
+
+.class-info__title {
+    font-size: 1.8rem;
+    margin-right: 6px;
+}
+
+.class-info__content {
+    font-size: 1.6rem;
+}
+
+.separate {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.line {
+    width: 50%;
+    border-bottom: 1px dashed #888;
+}
+
+.body-content-tbl__heading {
+    text-align: center;
 }

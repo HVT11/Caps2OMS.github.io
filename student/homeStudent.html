@@ -7,7 +7,7 @@
     <title>OCMS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
     <link rel="stylesheet" href="../assets/styles/base.css">
-    <link rel="stylesheet" href="../assets/styles/teacher/homeTeacher.css">
+    <link rel="stylesheet" href="../assets/styles/student/homeStudent.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1/css/all.min.css">
     <script src="../js/base.js"></script>
 </head>
@@ -48,51 +48,64 @@
                 <div class="grid__row">
                     <div class="main-container">
                         <div class="body-heading">
-                            <h1 class="body-heading-title">Quản lí lớp</h1>
+                            <h1 class="body-heading-title" id="classCode">Mã lớp</h1>
                         </div>
     
                         <div class="body-content">
-                            <div class="body-content__header">
-                                <div class="navigation">
-                                    <p class="navigation-item">Danh sách</p>
+                            <div class="class-info__list">
+                                <div class="class-info__item">
+                                    <h4 class="class-info__title">Tên lớp:</h4>
+                                    <p class="class-info__content" id="className"></p>
                                 </div>
+                                <div class="class-info__item">
+                                    <h4 class="class-info__title">Lịch học:</h4>
+                                    <p class="class-info__content" id="schedule"></p>
+                                </div>
+                                <div class="class-info__item">
+                                    <h4 class="class-info__title">Sĩ số:</h4>
+                                    <p class="class-info__content" id="totalStu"></p>
+                                </div>
+                            </div>
+
+                            <div class="separate">
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="body-content-tbl">
+                                <h1 class="body-content-tbl__heading">Lịch sử điểm danh</h1>
                                 <div class="controls">
                                     <div class="controls__search">
                                         <input type="text" class="controls__search-inp" placeholder="Tìm kiếm">
                                         <i class="controls__search-icon fa-solid fa-circle-xmark"></i>
                                     </div>
-
+    
                                     <div class="controls__btn">
                                         <button href="" class="controls__btn-tb">
-                                            <i class="fa-solid fa-arrow-up-short-wide"></i>
-                                            <span>Sắp xếp</span>
+                                            <span>Tuần</span>
                                         </button>
                                         <button href="" class="controls__btn-tb">
-                                            <i class="fa-solid fa-filter"></i>
-                                            <span>Bộ lọc</span>
+                                            <span>Tháng</span>
+                                        </button>
+                                        <button href="" class="controls__btn-tb">
+                                            <span>Danh sách</span>
                                         </button>
                                         <button class="btn controls__btn-add" onclick="openForm()">
-                                            <i class="fa-solid fa-plus"></i>
-                                            <span>Thêm lớp mới</span>
+                                            <span>Xuất File</span>
                                         </button>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="body-content-tbl">
-                                <table class="tb-class">
-                                    <thead class="tb-class__head">
-                                        <tr class="tb-class-row">
-                                            <th class="tb-class-heading">Mã lớp</th>
-                                            <th class="tb-class-heading">Tên lớp</th>
-                                            <th class="tb-class-heading">Lịch học</th>
-                                            <th class="tb-class-heading">Sĩ số</th>
-                                            <th class="tb-class-heading">Ngày tạo</th>
-                                            <th class="tb-class-heading tb-options"></th>
+                                <table class="tb-attendance">
+                                    <thead class="tb-attendance__head">
+                                        <tr class="tb-attendance-row">
+                                            <th class="tb-attendance-heading">Ngày điểm danh</th>
+                                            <th class="tb-attendance-heading">Giờ điểm danh</th>
+                                            <th class="tb-attendance-heading">Có mặt</th>
+                                            <th class="tb-attendance-heading">Lí do</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="tb-class__body" id="listClass">
+                                    <tbody class="tb-attendance__body" id="listAttendance">
                                         
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -107,7 +120,7 @@
             <p class="footer">Copyright © 2022 all rights reserved</p>
         </footer>
     </div>
-    <script src="../js/teacher/homeTeacher.js"></script>
+    <script src="../js/student/homeStudent.js"></script>
     <!-- Modal layout -->
     <div class="modal" id="modal-logOut">
         <div class="modal__overlay">
@@ -131,44 +144,28 @@
         <div class="modal__overlay">
         </div>
         <div class="modal__body">
-            <div class="addClass-form">
+            <div class="addStudent-form">
                 <!-- Add class -->
-                <div class="addClass-form__container" id="addClass">
-                    <div class="addClass-form__header">
-                        <h1 class="addClass-form__heading">Tạo lớp mới</h1>
+                <div class="addStudent-form__container" id="addStudent">
+                    <div class="addStudent-form__header">
+                        <h1 class="addStudent-form__heading">Thêm học sinh</h1>
                     </div>
                     
-                    <div class="addClass-form__input">
-                        <ul class="addClass-form__input-list">
-                            <li class="addClass-form__input-item">
-                                <p class="addClass__text">Mã lớp:</p>
-                                <input type="text" class="addClass__input" id="classCode">
-                            </li>
-                            <li class="addClass-form__input-item">
-                                <p class="addClass__text">Tên lớp:</p>
-                                <input type="text" class="addClass__input" id="className">
-                            </li>
-                            <li class="addClass-form__input-item">
-                                <p class="addClass__text">Lịch học:</p>
-                                <input type="text" class="addClass__input" id="schedule">
-                            </li>
-                            <li class="addClass-form__input-item">
-                                <p class="addClass__text">Sĩ số:</p>
-                                <input type="text" class="addClass__input" id="totalStu">
-                            </li>
-                        </ul>
-                    </div>
+                    <div class="addStudent-form__input">
+                        <p class="addStudent-form__text" class="addStudent__input">Lịch sử điểm danh:</p>
+                        <input type="file" name="" id="uploadFile" accept=".csv" class="addStudent-form__file">
+                    </div>    
                     
                     <div class="addClass-form__controls">
                         <button class="btn" onclick="cancelBtn()">Thoát</button>
-                        <button class="btn" onclick="addClass()">Tạo mới</button>
+                        <button class="btn" onclick="addListStudent()">Thêm</button>
                     </div>
                 </div>
 
                 <!-- Success -->
-                <div class="success-form__container" id="addClassSuccess">
+                <div class="success-form__container" id="addStudentSuccess">
                     <div class="addClass-form__header">
-                        <h1 class="addClass-form__heading">Tạo lớp mới thành công</h1>
+                        <h1 class="addClass-form__heading">Thêm danh sách học sinh thành công</h1>
                     </div>                    
                     <div class="addClass-form__controls">
                         <button class="btn" onclick="cancelBtnReload()">OK</button>
@@ -177,5 +174,6 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
 </body>
 </html>
