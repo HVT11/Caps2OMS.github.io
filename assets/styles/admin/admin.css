@@ -149,6 +149,12 @@
     padding: 0;
 }
 
+.all-user-data {
+    transform: scaleX(1px);
+}
+
 .all-user-tb__body {
     display: block;
+    height: 220px;
+    overflow: auto;
 }

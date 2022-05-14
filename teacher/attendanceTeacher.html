@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCMS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
+    <link rel="stylesheet" href="../assets/styles/base.css">
+    <link rel="stylesheet" href="../assets/styles/teacher/classManager.css">
+    <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1/css/all.min.css">
+    <script src="../js/base.js"></script>
+</head>
+<body>
+    <div class="app">
+        <div class="app__header">
+            <div class="grid">
+                <div class="header">
+                    <div class="header-with-avatar">
+                        <img src="../assets/img/icon.png" alt="" class="header__icon">
+                        <h2 class="header__software-name">Online Classroom 
+                        </br> Management Support Tool</h2>
+                    </div>
+                    <div class="header-with-avatar">
+                        <div class="header__user">
+                            <img src="../assets/img/1.png" alt="avatar" class="header__avatar">
+                            <p class="header__username" id="username"></p>
+                            <i class="header__icon-down fa-solid fa-angle-down"></i>
+    
+                            <ul class="header__user-menu">
+                                <li class="header__user-item">
+                                    <a href="" class="">Thông tin cá nhân</a>
+                                </li>
+                                <li class="header__user-item">
+                                    <a href="" class="">Đổi mật khẩu</a>
+                                </li>
+                                <li class="header__user-item">
+                                    <div onclick="openFormLogout()">Đăng xuất</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="app__container">
+            <div class="grid">
+                <div class="grid__row">
+                    <div class="main-container">
+                        <div class="body-heading">
+                            <h1 class="body-heading-title" id="classCode"></h1>
+                        </div>
+    
+                        <div class="body-content">
+                            <div class="body-content__header">
+                                <div class="navigation">
+                                    <a href="./classManager.html" class="navigation-link">
+                                        <i class="fa-solid fa-circle-left"></i>
+                                    </a>
+                                    <p class="navigation-item">Danh sách > Chi tiết > Điểm danh</p>
+                                </div>
+                            </div>
+
+                            <div class="class-info__list" style="width: 500px;">
+                                <div class="class-info__item">
+                                    <h4 class="class-info__title">Ngày:</h4>
+                                    <p class="class-info__content" id="Date"></p>
+                                </div>
+                                <div class="class-info__item">
+                                    <h4 class="class-info__title">Giờ:</h4>
+                                    <p class="class-info__content" id="Time"></p>
+                                </div>
+                                
+                            </div>
+
+                            <div class="tab-controls">
+                                <button class="tabBtn tabBtn--enable" id="basic-tab-btn" onclick="moveBasicTab()">Thủ công</button>
+                                <button class="tabBtn" id="auto-tab-btn"  onclick="moveAutoTab()">Tự động</button>
+                            </div>
+
+                            <div class="body-content-tbl">
+                                <!-- basic attendance -->
+                                <div id="basic-tab">
+                                    <h1 class="body-content-tbl__heading">ĐIỂM DANH</h1>
+                                    <div class="controls">
+                                        <div class="controls__search">
+                                            <input type="text" class="controls__search-inp" placeholder="Tìm kiếm">
+                                            <i class="controls__search-icon fa-solid fa-circle-xmark"></i>
+                                        </div>
+        
+                                        <div class="controls__btn" style="justify-content: space-around;">
+                                            <button href="" class="btn controls__btn-add" onclick="refreshData()">
+                                                <i class="fa-solid fa-arrows-rotate"></i>
+                                                <span>Cập nhật</span>
+                                            </button>
+                                            <button class="btn controls__btn-add" onclick="openForm()">
+                                                <i class="fa-solid fa-file-csv"></i>
+                                                <span>Xuất file</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <table class="tb-student">
+                                        <thead class="tb-student__head">
+                                            <tr class="tb-student-row">
+                                                <th class="tb-student-heading">Họ và tên</th>
+                                                <th class="tb-student-heading">Mã sinh viên</th>
+                                                <th class="tb-student-heading">Có mặt</th>
+                                                <th class="tb-student-heading">Ghi chú</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="tb-student__body" id="attendance-list">
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            
+
+                                <!-- Automatic attendance -->
+                                <div id="auto-tab">
+                                    <h1 class="body-content-tbl__heading">ĐIỂM DANH</h1>
+                                    <div class="controls" style="font-size: 1.4rem; align-items: center;">
+                                        <div id="face-detect" style="font-size: 1.4rem;">
+                                            <p id="loading">Hệ thống đang tải dữ liệu ... </p>
+	                                        <input type="file" name="file" id="file-input" />
+
+                                        </div>
+            
+                                        <div class="controls__btn" style="justify-content: space-around; height: 30px;">
+                                            <button href="" class="btn controls__btn-add" onclick="moveToDetail()">
+                                                <i class="fa-solid fa-floppy-disk"></i>
+                                                <span>Lưu</span>
+                                            </button>
+                                            <button class="btn controls__btn-add" onclick="openForm()">
+                                                <i class="fa-solid fa-file-csv"></i>
+                                                <span>Xuất file</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <table class="tb-student">
+                                        <thead class="tb-student__head">
+                                            <tr class="tb-student-row">
+                                                <th class="tb-student-heading">Họ và tên</th>
+                                                <th class="tb-student-heading">Mã sinh viên</th>
+                                                <th class="tb-student-heading">Có mặt</th>
+                                                    <th class="tb-student-heading">Ghi chú</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="tb-student__body" id="attendance-auto-list">
+                                                
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="app__footer">
+            <p>This is the product to be demo not product to be sell</p>
+            <p class="footer">Copyright © 2022 all rights reserved</p>
+        </footer>
+    </div>
+    
+    <!-- Modal layout -->
+    <div class="modal" id="modal-logOut">
+        <div class="modal__overlay">
+        </div>
+        <div class="modal__body">
+            <div class="logout-form">
+                <div class="logout-form__container">
+                    <div class="logout-form__header">
+                        <h1 class="logout-form__heading">Bạn có thực sự muốn đăng xuất</h1>
+                    </div>
+                    
+                    <div class="logout-form__controls">
+                        <button class="btn" onclick="cancelLogout()">Trở lại</button>
+                        <button class="btn" onclick="yesLogout()">Có</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.js"
+	integrity="sha256-JOJ7NmVm2chxYZ1KPcAYd2bwVK7NaFj9QKMp7DClews=" crossorigin="anonymous"></script>
+    <script src="../js/teacher/attendanceTeacher.js"></script>
+    <script src="../js/faceDetect.js"></script>
+</body>
+</html>

@@ -1,10 +1,13 @@
 // API
-var accountApi = 'http://127.0.0.1:8000/account'
-var teacherApi = 'http://127.0.0.1:8000/teacher'
-var classApi = 'http://127.0.0.1:8000/class'
-var studentApi = 'http://127.0.0.1:8000/student'
-var listAttendanceApi = 'http://127.0.0.1:8000/listattendance'
-var attendanceApi = 'http://127.0.0.1:8000/attendance'
+const accountApi = 'http://127.0.0.1:8000/account'
+const teacherApi = 'http://127.0.0.1:8000/teacher'
+const classApi = 'http://127.0.0.1:8000/class'
+const studentApi = 'http://127.0.0.1:8000/student'
+const listAttendanceApi = 'http://127.0.0.1:8000/listattendance'
+const attendanceApi = 'http://127.0.0.1:8000/attendance'
+const imgUploadApi = 'http://127.0.0.1:8000/student/savefile'
+const getImgApi = 'http://127.0.0.1:8000/media'
+
 
 //Function
 function openForm() {
@@ -60,6 +63,18 @@ function successClose() {
     addSuccess.classList.remove("success-form__container--enable")
     
     var deleteStudent = document.getElementById("deleteStudent")
+    deleteStudent.classList.remove("form__container--disable")
+
+}
+
+function successAttendanceClose() {
+    var modal = document.getElementById("modal-delete-attendance")
+    modal.classList.remove("modal--active")
+    
+    var addSuccess = document.getElementById("form-success")
+    addSuccess.classList.remove("success-form__container--enable")
+    
+    var deleteStudent = document.getElementById("delete-attendance")
     deleteStudent.classList.remove("form__container--disable")
 
 }

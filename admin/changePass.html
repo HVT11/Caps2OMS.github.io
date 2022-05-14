@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../assets/styles/base.css">
     <link rel="stylesheet" href="../assets/styles/admin/content.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1/css/all.min.css">
+    <script src="../js/base.js"></script>
 </head>
 <body>
     <div class="app">
@@ -28,13 +29,10 @@
     
                             <ul class="header__user-menu">
                                 <li class="header__user-item">
-                                    <a href="" class="">Thông tin cá nhân</a>
-                                </li>
-                                <li class="header__user-item">
                                     <a href="" class="">Đổi mật khẩu</a>
                                 </li>
                                 <li class="header__user-item">
-                                    <a href="" class="">Đăng xuất</a>
+                                    <div onclick="openFormLogout()">Đăng xuất</div>
                                 </li>
                             </ul>
                         </div>
@@ -55,7 +53,7 @@
                                     </a>
                                 </li>
                                 <li class="navbar-item">
-                                    <a href="" class="navbar-item__link">
+                                    <a href="./manageUser.html" class="navbar-item__link">
                                         <i class="navbar-item__icon fa-solid fa-list-check"></i>
                                         <p class="navbar-item__text">Quản lí người dùng</p>
                                     </a>
@@ -73,16 +71,16 @@
                                     </a>
                                 </li>
                                 <li class="navbar-item">
-                                    <a href="" class="navbar-item__link">
+                                    <a href="./contact.html" class="navbar-item__link">
                                         <i class="navbar-item__icon fa-solid fa-bell"></i>
                                         <p class="navbar-item__text">Liên hệ</p>
                                     </a>
                                 </li>
                                 <li class="navbar-item">
-                                    <a href="" class="navbar-item__link">
+                                    <div class="navbar-item__link" onclick="openFormLogout()">
                                         <i class="navbar-item__icon fa-solid fa-right-from-bracket"></i>
                                         <p class="navbar-item__text">Đăng xuất</p>
-                                    </a>
+                                    </div>
                                 </li>
                             </ul>
                         </nav>

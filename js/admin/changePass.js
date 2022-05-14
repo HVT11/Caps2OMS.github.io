@@ -1,4 +1,3 @@
-var accountApi = 'http://127.0.0.1:8000/account'
 var userName = sessionStorage.getItem("username")
 
 function start(){

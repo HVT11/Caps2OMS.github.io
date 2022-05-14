@@ -29,6 +29,7 @@ getClassByClassID()
         var schedule = document.getElementById("schedule")
         var totalStu = document.getElementById("totalStu")
 
+        sessionStorage.setItem('classCode', Classes.ClassCode)
         classCode.innerHTML = Classes.ClassCode
         className.innerHTML = Classes.ClassName
         schedule.innerHTML = Classes.Schedule
@@ -55,13 +56,8 @@ function renderListStudent(listStudent){
     var htmls = filterStudent.map((student) => {
         return `
         <tr class="tb-student-row">
-            <td class="tb-student-data">${student.Username}</td>
             <td class="tb-student-data">${student.Name}</td>
-            <td class="tb-student-data">
-                ${
-                    student.StudentCode == null ? "" : student.StudentCode
-                }
-            </td>
+            <td class="tb-student-data">${student.Username}</td>
             <td class="tb-student-data">
                 ${
                     student.Gentle == "1"
@@ -76,7 +72,7 @@ function renderListStudent(listStudent){
             </td>
             <td class="tb-student-data">
                 ${
-                    student.Email == null ? "" : student.Email
+                    student.Email == null ? '' : student.Email
                 }
             </td>
             <td class="tb-student-data tb-options">
@@ -90,6 +86,71 @@ function renderListStudent(listStudent){
     rowStudent.innerHTML = htmls.join("")
 }  
 
+//Move to attendance
+function moveToAttendance(ListAttendanceID) {
+    var total = Number(document.getElementById(`${ListAttendanceID}-total`).innerHTML)
+    sessionStorage.setItem('listAttendanceID', ListAttendanceID)
+    if(total != 0) {
+        getStudents(filterAndSave)
+
+        setTimeout(() => {
+            location.href = './attendanceTeacher.html'
+        },3000)
+    }
+
+    else {
+        getStudents(filterAndAddAttendance)
+    
+        setTimeout(() => {
+            location.href = './attendanceTeacher.html'
+        }, 7000)
+    }
+
+}
+
+function filterAndAddAttendance(listStudent) {
+    var labels = []
+    var filterStudent = listStudent.filter(student => student.ClassID == ClassID)
+    filterStudent.forEach(student => {
+        addAttendance(student.Username)
+        sessionStorage.setItem(student.Username, student.Name)
+        labels.push(student.Username)
+    })
+    sessionStorage.setItem('labels', labels)
+}
+
+function filterAndSave(listStudent) {
+    var labels = []
+    var filterStudent = listStudent.filter(student => student.ClassID == ClassID)
+    filterStudent.forEach(student => {
+        sessionStorage.setItem(student.Username, student.Name)
+        labels.push(student.Username)
+    })
+    sessionStorage.setItem('labels', labels)
+}
+
+function addAttendance(Username) {
+    var formData = {
+        Username: Username,
+        Status: false,
+        Note: null,
+        ListAttendanceID: sessionStorage.getItem('listAttendanceID')
+    }
+
+    postAttendancce(formData)
+}
+
+function postAttendancce(data) {
+    var options = {
+        header:{
+            'Content-type': 'application/json',
+        },
+        method: "POST",
+        body: JSON.stringify(data)
+    }
+    fetch(attendanceApi, options)
+}
+
 function renderListAttendance(listAttendance){
     var rowAttendance = document.getElementById("listAttendance")
     var filterStudent = listAttendance.filter(element => element.ClassID == ClassID)
@@ -98,13 +159,13 @@ function renderListAttendance(listAttendance){
         <tr class="tb-student-row">
             <td class="tb-student-data attendance-link" onclick="moveToAttendance(${attendance.ListAttendanceID})">${attendance.Date}</td>
             <td class="tb-student-data">${attendance.Time.slice(0,5)}</td>
-            <td class="tb-student-data">
+            <td class="tb-student-data" id="${attendance.ListAttendanceID}-total">
                 ${
                     attendance.Total == null ? "" : attendance.Total
                 }
             </td>
             <td class="tb-student-data tb-options">
-                <i class="options-icon fa-solid fa-trash-can" onclick ="openDelete()"></i>
+                <i class="options-icon fa-solid fa-trash-can" onclick ="openDeleteAttendance(${attendance.ListAttendanceID})"></i>
             </td>
         </tr>
         `
@@ -112,7 +173,6 @@ function renderListAttendance(listAttendance){
 
     rowAttendance.innerHTML = htmls.join("")
 }   
-
 
 
 // Read CSV File and post 
@@ -188,9 +248,11 @@ function addListAttendance() {
 
     postListAttendance(formData)
 
-    document.getElementById('modal-addAttendance').classList.remove('modal--active')
+    setTimeout(() => {
+        document.getElementById('modal-addAttendance').classList.remove('modal--active')
+        getListAttendance(renderListAttendance)
+    }, 2000)
 
-    getListAttendance(renderListAttendance)
 }
 
 function postListAttendance(data) {
@@ -314,3 +376,48 @@ function moveTabStu() {
     document.getElementById('list-student-tab').style.display = 'block'
 }
 
+function openDeleteAttendance(id) {
+    sessionStorage.setItem('listAttendanceID', id)
+    var modal = document.getElementById("modal-delete-attendance")
+    modal.classList.add("modal--active")
+}
+
+function cancelDeleteAttendace() {
+    var modal = document.getElementById("modal-delete-attendance")
+    modal.classList.remove("modal--active")
+}
+
+function deleteAttendance() {
+    var id = sessionStorage.getItem('listAttendanceID')
+    deleteAttend(id)
+
+    setTimeout(() => notifyDeleteAttendSuccess(),2000)
+
+    setTimeout(() => getListAttendance(renderListAttendance),3000)
+}
+
+
+function deleteAttend(id) {
+    var options = {
+        header: {
+            'Content-Type': 'application/json'
+        },
+        method: 'DELETE'
+    }
+    fetch(listAttendanceApi + '/' + id, options)
+}
+
+function cancelBtnAttendance() {
+    var modal = document.getElementById("modal-delete-attendance")
+    modal.classList.remove("modal--active")
+}
+
+function notifyDeleteAttendSuccess() {
+    // Disable delete form
+    var deleteStudent = document.getElementById("delete-attendance")
+    deleteStudent.classList.add("form__container--disable")
+
+    // Enable success
+    var addSuccess = document.getElementById("form-success")
+    addSuccess.classList.add("success-form__container--enable")
+}

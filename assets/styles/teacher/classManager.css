@@ -2,6 +2,10 @@
     display: none;
 }
 
+#auto-tab {
+    display: none;
+}
+
 .tb-student {
     margin-top: 20px;
     width: 100%;
@@ -15,6 +19,11 @@
 .tb-student-heading {
     transform: translateX(-1px);
 }
+
+.tb-student__body {
+    max-height: 380px;
+    overflow: auto;
+} 
 
 .tb-student-data {
     padding: 6px 0;
@@ -134,4 +143,8 @@
     margin: 6px 0; 
     display: flex;
     justify-content: space-around;
+}
+
+.checkbox-attendance {
+    cursor: pointer;
 }

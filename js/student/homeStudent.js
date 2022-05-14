@@ -8,29 +8,7 @@ function start() {
 start()
 
 //Funtion
-function getStudentIdByUsername(teacherID){
-    return new Promise(function(resolve){
-        fetch(studentApi)
-            .then(res => res.json())
-            .then(function(listStudent){
-                var StudentID = listStudent.find(student => student.Username == userName).StudentID
-                resolve(StudentID)
-            })
-        })
-}
-
-function getListAttendanceById(StudentID) {
-    return new Promise(function(resolve){
-        fetch(attendanceApi)
-            .then(res => res.json())
-            .then(function(listAttendance){
-                var listFilter = listAttendance.filter(attendance => attendance.StudentID == StudentID)
-                resolve(listFilter)
-            })
-    })
-}
-
-function getClassIdByUsername(teacherID){
+function getClassIdByUsername(){
     return new Promise(function(resolve){
         fetch(studentApi)
             .then(res => res.json())
@@ -69,12 +47,38 @@ getClassIdByUsername()
         totalStu.innerHTML = classes.TotalStu
     })
 
-getStudentIdByUsername()
-    .then(async function(StudentID){
-        const result = await getListAttendanceById(StudentID)
-        return (result)
+
+function getListAttendanceByClassID(ClassID) {
+    return new Promise(function(resolve){
+        fetch(listAttendanceApi)
+            .then(res => res.json())
+            .then(function(listAttendance){
+                var listFilter = listAttendance.filter(attendance => attendance.ClassID == ClassID)
+                resolve(listFilter)
+            })
     })
-    .then(function(listAttendance){
+}
+
+function getAttendanceByListAttendanceId(id) {
+    return new Promise(function(resolve){
+        fetch(attendanceApi)
+            .then(res => res.json())
+            .then(function(list){
+                var attendance = list.find(attendance => (attendance.ListAttendanceID == id && attendance.Username == userName))
+                if(attendance.Status == true) document.getElementById(attendance.ListAttendanceID + '-status').checked = true
+                document.getElementById(attendance.ListAttendanceID + '-note').innerHTML = attendance.Note
+                resolve(attendance)
+            })
+    })
+}
+
+getClassIdByUsername()
+    .then((ClassID) => {
+        const result = getListAttendanceByClassID(ClassID)
+        return result
+    })
+    .then(listAttendance => {
+        var list = listAttendance
         var rowAttendance = document.getElementById("listAttendance")
         var htmls = listAttendance.map(attendance => {
             return `
@@ -82,21 +86,18 @@ getStudentIdByUsername()
                 <td class="tb-attendance-data">${attendance.Date}</td>
                 <td class="tb-attendance-data">${attendance.Time.slice(0,5)}</td>
                 <td class="tb-attendance-data">
-                    ${
-                        attendance.Status == false
-                        ? ""
-                        : "x"
-                    }
+                    <input type="checkbox" id="${attendance.ListAttendanceID}-status" disabled='true' style='color: var(--primary-color); font-size: 1.4rem; '>
                 </td>
-                <td class="tb-attendance-data">
-                    ${
-                        attendance.Note == null ? "" : attendance.Note
-                    }
-                </td>
+                <td class="tb-attendance-data" id="${attendance.ListAttendanceID}-note"></td>
             </tr>
             `
         })
-
         rowAttendance.innerHTML = htmls.join("")
-    })
 
+        return list
+    })
+    .then(list => {
+        list.forEach(listAttendance => {
+            getAttendanceByListAttendanceId(listAttendance.ListAttendanceID)
+        })
+    })

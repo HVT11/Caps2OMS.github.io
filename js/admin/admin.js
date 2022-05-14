@@ -1,19 +1,16 @@
-var accountApi = 'http://127.0.0.1:8000/account'
 
 function start(){
-    userName()
-    getListAccounts(renderListAccounts)
-}
-
-start()
-
-//Function
-function userName(){
     var header_username = document.getElementById("username")
     var lastlogin_username = document.getElementById("lastlogin_username")
     header_username.innerHTML = sessionStorage.getItem("username")
     lastlogin_username.innerHTML = sessionStorage.getItem("username")
+    getListAccounts(renderListAccounts)
+    countClass()
+    countStudent()
+    countTeacher()
 }
+
+start()
 
 function getListAccounts(callback) {
     fetch(accountApi)
@@ -38,4 +35,43 @@ function renderListAccounts(listAccount) {
         `
     })
     rowAccount.innerHTML = htmls.join("")
+}
+
+function countClass() {
+    fetch(classApi)
+        .then(res => res.json())
+        .then(classes => {
+            let count = 0
+            classes.forEach(() =>{
+                count++
+            })
+
+            document.getElementById('total-class').innerHTML = count
+        })
+}
+
+function countStudent() {
+    fetch(studentApi)
+        .then(res => res.json())
+        .then(listStudent => {
+            let count = 0
+            listStudent.forEach(() =>{
+                count++
+            })
+
+            document.getElementById('total-student').innerHTML = count
+        })
+}
+
+function countTeacher() {
+    fetch(teacherApi)
+        .then(res => res.json())
+        .then(listTeacher => {
+            let count = 0
+            listTeacher.forEach(() =>{
+                count++
+            })
+
+            document.getElementById('total-teacher').innerHTML = count
+        })
 }

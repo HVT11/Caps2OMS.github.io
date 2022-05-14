@@ -113,7 +113,6 @@
                                     <table class="tb-student">
                                         <thead class="tb-student__head">
                                             <tr class="tb-student-row">
-                                                <th class="tb-student-heading">Tên đăng nhập</th>
                                                 <th class="tb-student-heading">Họ và tên</th>
                                                 <th class="tb-student-heading">Mã sinh viên</th>
                                                 <th class="tb-student-heading">Giới tính</th>
@@ -254,6 +253,33 @@
                     </div>                    
                     <div class="addClass-form__controls">
                         <button class="btn" onclick="successClose()">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modal-delete-attendance">
+        <div class="modal__overlay">
+        </div>
+        <div class="modal__body">
+            <div class="delete-form">
+                <div class="delete-form__container" id="delete-attendance">
+                    <div class="delete-form__header">
+                        <h1 class="delete-form__heading">Bạn có thực sự muốn xoá danh sách điểm danh này</h1>
+                    </div>
+                    
+                    <div class="delete-form__controls">
+                        <button class="btn" onclick="cancelDeleteAttendace()">Trở lại</button>
+                        <button class="btn" onclick="deleteAttendance()">Xoá</button>
+                    </div>
+                </div>
+                <!-- Success -->
+                <div class="success-form__container" id="form-success">
+                    <div class="addClass-form__header">
+                        <h1 class="addClass-form__heading">Xoá thành công</h1>
+                    </div>                    
+                    <div class="addClass-form__controls">
+                        <button class="btn" onclick="successAttendanceClose()">OK</button>
                     </div>
                 </div>
             </div>

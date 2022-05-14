@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCMS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
+    <link rel="stylesheet" href="../assets/styles/base.css">
+    <link rel="stylesheet" href="../assets/styles/student/profileStudent.css">
+    <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1/css/all.min.css">
+    <script src="../js/base.js"></script>
+</head>
+<body>
+    <div class="app">
+        <div class="app__header">
+            <div class="grid">
+                <div class="header">
+                    <div class="header-with-avatar">
+                        <img src="../assets/img/icon.png" alt="" class="header__icon">
+                        <a class="header__software-name" href="./homeStudent.html">
+                            <h2>Online Classroom 
+                            </br> Management Support Tool</h2>
+                        </a>
+                    </div>
+                    <div class="header-with-avatar">
+                        <div class="header__user">
+                            <img src="" alt="avatar" class="header__avatar" id="header__avatar">
+                            <p class="header__username" id="username"></p>
+                            <i class="header__icon-down fa-solid fa-angle-down"></i>
+    
+                            <ul class="header__user-menu">
+                                <li class="header__user-item">
+                                    <a href="./profileStudent.html" class="" onclick="">Thông tin cá nhân</a>
+                                </li>
+                                <li class="header__user-item">
+                                    <a href="" class="">Đổi mật khẩu</a>
+                                </li>
+                                <li class="header__user-item">
+                                    <div onclick="openFormLogout()">Đăng xuất</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="app__container">
+            <div class="grid">
+                <div class="grid__row">
+                    <div class="main-container">
+                        <div class="body-heading">
+                            <h1 class="body-heading-title">THÔNG TIN CÁ NHÂN</h1>
+                        </div>
+    
+                        <div class="body-content">
+                            <div class="img-container">
+                                <div class="img-container__avatar">
+                                    <img src="" alt="Avatar" class="img-avatar" id="img-avatar">
+                                    <p class="text-avatar">Ảnh đại diện</p>
+                                </div>
+                                <div class="img-container__img-data">
+                                    <div class="text-data">Để hỗ trợ cho việc điểm danh bằng nhận diện khuôn mặt vui lòng tải ảnh lên</div>
+                                    <div id="img-data">
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="img-container__upload">
+                                    <div class="text-upload mg-bottom-m">
+                                        Lưu ý: Đặt tên ảnh theo định dạng 'MSSV-Thứ tự.jpg' và tải lên phải đủ 3 ảnh
+                                        </br>
+                                        Ví dụ: 24211214089-1.jpg
+                                    </div>
+                                    <input type="file" name="" id="img-data-upload">
+                                    <button class="btn" onclick="getImg()">Tải lên</button>
+                                </div>
+                            </div>
+
+                            <div class="separate separate-mod">
+                                <div class="line"></div>
+                            </div>
+
+                            <div class="form-info">
+                                <div class="line-input">
+                                    <p class="line-input__label">Họ và tên: </p>
+                                    <input type="text" class="line-input__input" id="name">
+                                </div>
+                                <div class="line-input">
+                                    <p class="line-input__label">Mã sinh viên: </p>
+                                    <input type="text" class="line-input__input" id="student-code">
+                                </div>
+                                <div class="line-input">
+                                    <p class="line-input__label">Giới tính :</p>
+                                    <div class="radio-text">
+                                        <input type="radio" name="gentle" id="men" class="radio-btn"><p>Nam</p>
+                                        <input type="radio" name="gentle" id="women" class="radio-btn"><p>Nữ</p>
+                                    </div>
+                                </div>
+                                <div class="line-input">
+                                    <p class="line-input__label">Ngày sinh: </p>
+                                    <input type="date" class="line-input__input" id="date">
+                                </div>
+                                <div class="line-input">
+                                    <p class="line-input__label">Email: </p>
+                                    <input type="email" class="line-input__input" id="email">
+                                </div>
+                                
+                                <button class="btn btn-profile" onclick="getPutInfo()">Cập nhật</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="app__footer">
+            <p>This is the product to be demo not product to be sell</p>
+            <p class="footer">Copyright © 2022 all rights reserved</p>
+        </footer>
+    </div>
+    <script src="../js/student/profileStudent.js"></script>
+    <!-- Modal layout -->
+    <div class="modal" id="modal-logOut">
+        <div class="modal__overlay">
+        </div>
+        <div class="modal__body">
+            <div class="logout-form">
+                <div class="logout-form__container">
+                    <div class="logout-form__header">
+                        <h1 class="logout-form__heading">Bạn có thực sự muốn đăng xuất</h1>
+                    </div>
+                    
+                    <div class="logout-form__controls">
+                        <button class="btn" onclick="cancelLogout()">Trở lại</button>
+                        <button class="btn" onclick="yesLogout()">Có</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modal-Form">
+        <div class="modal__overlay">
+        </div>
+        <div class="modal__body">
+            <div class="addStudent-form">
+                <!-- Add class -->
+                <div class="addStudent-form__container" id="addStudent">
+                    <div class="addStudent-form__header">
+                        <h1 class="addStudent-form__heading">Thêm học sinh</h1>
+                    </div>
+                    
+                    <div class="addStudent-form__input">
+                        <p class="addStudent-form__text" class="addStudent__input">Lịch sử điểm danh:</p>
+                        <input type="file" name="" id="uploadFile" accept=".csv" class="addStudent-form__file">
+                    </div>    
+                    
+                    <div class="addClass-form__controls">
+                        <button class="btn" onclick="cancelBtn()">Thoát</button>
+                        <button class="btn" onclick="addListStudent()">Thêm</button>
+                    </div>
+                </div>
+
+                <!-- Success -->
+                <div class="success-form__container" id="addStudentSuccess">
+                    <div class="addClass-form__header">
+                        <h1 class="addClass-form__heading">Thêm danh sách học sinh thành công</h1>
+                    </div>                    
+                    <div class="addClass-form__controls">
+                        <button class="btn" onclick="cancelBtnReload()">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
