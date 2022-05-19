@@ -1,9 +1,11 @@
 var ClassID = sessionStorage.getItem("ClassID")
 var userName = sessionStorage.getItem('username')
+var avatar = `http://127.0.0.1:8000/media/${userName}.jpg`
 
 function start() {
     var header_username = document.getElementById("username")
     header_username.innerHTML = userName
+    document.getElementById('header__avatar').src = avatar
     getStudents(renderListStudent)
     getListAttendance(renderListAttendance)
 }
@@ -76,8 +78,8 @@ function renderListStudent(listStudent){
                 }
             </td>
             <td class="tb-student-data tb-options">
-                <i class="options-icon fa-solid fa-pen-to-square" onclick ="openChangePass(${student.Username})"></i>
-                <i class="options-icon fa-solid fa-trash-can" onclick ="openDelete(${student.StudentID}, ${student.Username})"></i>
+                <i class="options-icon fa-solid fa-pen-to-square" onclick ="openChangePass1(${student.Username})"></i>
+                <i class="options-icon fa-solid fa-trash-can" onclick ="openDelete2(${student.StudentID}, ${student.Username})"></i>
             </td>
         </tr>
         `

@@ -23,16 +23,16 @@
                     </div>
                     <div class="header-with-avatar">
                         <div class="header__user">
-                            <img src="../assets/img/1.png" alt="avatar" class="header__avatar">
+                            <img src="1" alt="avatar" class="header__avatar" id="header__avatar" onerror="this.onerror=null; this.src='../assets/img/avatar.jpg';">
                             <p class="header__username" id="username"></p>
                             <i class="header__icon-down fa-solid fa-angle-down"></i>
     
                             <ul class="header__user-menu">
                                 <li class="header__user-item">
-                                    <a href="" class="">Thông tin cá nhân</a>
+                                    <a href="./profileTeacher.html" class="">Thông tin cá nhân</a>
                                 </li>
                                 <li class="header__user-item">
-                                    <a href="" class="">Đổi mật khẩu</a>
+                                    <a href="./changePassTeacher.html" class="">Đổi mật khẩu</a>
                                 </li>
                                 <li class="header__user-item">
                                     <div onclick="openFormLogout()">Đăng xuất</div>
@@ -126,7 +126,7 @@
                                         </div>
             
                                         <div class="controls__btn" style="justify-content: space-around; height: 30px;">
-                                            <button href="" class="btn controls__btn-add" onclick="moveToDetail()">
+                                            <button href="" class="btn controls__btn-add" onclick="saveAttendance()">
                                                 <i class="fa-solid fa-floppy-disk"></i>
                                                 <span>Lưu</span>
                                             </button>

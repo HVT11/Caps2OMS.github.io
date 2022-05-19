@@ -5,8 +5,7 @@ var avatar = `http://127.0.0.1:8000/media/${userName}-1.jpg`
 function start() {
     var header_username = document.getElementById("username")
     header_username.innerHTML = userName
-    document.getElementById('img-avatar').src = avatar
-    document.getElementById('header__avatar').src = avatar
+    renderAvatar()
     renderImage()
     getStudent(renderInfo)
 }
@@ -16,11 +15,16 @@ start()
 function renderImage() {
     var imgData = document.getElementById('img-data')
     var htmls = `
-        <img src="http://127.0.0.1:8000/media/${userName}-1.jpg" alt="Photo-1" class="img-data">
-        <img src="http://127.0.0.1:8000/media/${userName}-2.jpg" alt="Photo-2" class="img-data">
-        <img src="http://127.0.0.1:8000/media/${userName}-3.jpg" alt="Photo-3" class="img-data">
+        <img src="http://127.0.0.1:8000/media/${userName}-1.jpg" alt="Photo-1" class="img-data" onerror="this.onerror=null; this.src='../assets/img/img-empty.jpg';">
+        <img src="http://127.0.0.1:8000/media/${userName}-2.jpg" alt="Photo-2" class="img-data" onerror="this.onerror=null; this.src='../assets/img/img-empty.jpg';">
+        <img src="http://127.0.0.1:8000/media/${userName}-3.jpg" alt="Photo-3" class="img-data" onerror="this.onerror=null; this.src='../assets/img/img-empty.jpg';">
     `
     imgData.innerHTML = htmls
+}
+
+function renderAvatar() {
+    document.getElementById('img-avatar').src = avatar
+    document.getElementById('header__avatar').src = avatar
 }
 
 function getImg() {
@@ -34,7 +38,10 @@ function getImg() {
 
     postImg(formData)
 
-    setTimeout(() => renderImage(), 2000)
+    setTimeout(() => {
+        renderImage()
+        renderAvatar()
+    }, 2000)
 }
 
 function postImg(data) {

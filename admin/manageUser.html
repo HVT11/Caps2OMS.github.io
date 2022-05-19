@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>OCMS | Online Classroom Management Support Tool</title>
+    <link rel="icon" type="image/x-icon" href="../assets/img/icon.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
     <link rel="stylesheet" href="../assets/styles/base.css">
-    <link rel="stylesheet" href="../assets/styles/admin/content.css">
+    <link rel="stylesheet" href="../assets/styles/admin/managerUser.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1/css/all.min.css">
     <script src="../js/base.js"></script>
 </head>
@@ -23,7 +24,7 @@
                     </div>
                     <div class="header-with-avatar">
                         <div class="header__user">
-                            <img src="../assets/img/1.png" alt="avatar" class="header__avatar">
+                            <img src="../assets/img/avatar.jpg" alt="avatar" class="header__avatar">
                             <p class="header__username" id="username"></p>
                             <i class="header__icon-down fa-solid fa-angle-down"></i>
     
@@ -88,7 +89,52 @@
                     <div class="grid__column-10">
                         <div class="content">
                             <h1 class="content-heading">Quản lí người dùng</h1>
+                            <div class="controls">
+                                <div class="controls__search mg-top-bot-l">
+                                    <input type="text" class="controls__search-inp" placeholder="Tìm kiếm">
+                                    <i class="controls__search-icon fa-solid fa-circle-xmark"></i>
+                                </div>
+                                <div class="tab-controls">
+                                    <button class="tabBtn tabBtn--enable" id="teacher-tab-btn" onclick="moveTeacherTab()">Giáo viên</button>
+                                    <button class="tabBtn" id="student-tab-btn"  onclick="moveStudentTab()">Học sinh</button>
+                                </div>
+                            </div>
+                            <div class="body-content-tbl">
+                                <!-- basic attendance -->
+                                <div id="teacher-tab">
+                                    <table class="tb">
+                                        <thead class="tb-head">
+                                            <tr class="tb-row">
+                                                <th class="tb-heading">Tên đăng nhập</th>
+                                                <th class="tb-heading">Mật khẩu</th>
+                                                <th class="tb-heading">Ngày tạo</th>
+                                                <td class="tb-heading"></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="tb__body" id="teacher-list">
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
                             
+
+                                <!-- Automatic attendance -->
+                                <div id="student-tab">
+                                    <table class="tb">
+                                        <thead class="tb__head">
+                                            <tr class="tb-row">
+                                                <th class="tb-heading">Tên đăng nhập</th>
+                                                <th class="tb-heading">Mật khẩu</th>
+                                                <th class="tb-heading">Ngày tạo</th>
+                                                <td class="tb-heading"></td>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="tb__body" id="student-list">
+                                                
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -102,46 +148,6 @@
     </div>
     
     <!-- Modal layout -->
-    <div class="modal" id="modal-Form">
-        <div class="modal__overlay">
-        </div>
-        <div class="modal__body">
-            <div class="notify-form">
-                <!-- Add teacher failure -->
-                <!-- <div class="notify-form__container notify-form__container--failure">
-                    <div class="notify-form__header">
-                        <h1 class="notify-form__heading">Thêm giáo viên thất bại</h1>
-                    </div>
-                    
-
-                    <div class="notify-form__controls">
-                        <button class="btn">Thử lại</button>
-                    </div>
-                </div> -->
-                <!-- Add teacher success -->
-                <div class="notify-form__container">
-                    <div class="notify-form__header">
-                        <h1 class="notify-form__heading">Thêm giáo viên thành công</h1>
-                    </div>
-                    
-                    <ul class="notify-form__account-list">
-                        <li class="notify-form__account-item">
-                            <p class="account-item__label">Tên tài khoản:</p>
-                            <p class="account-item__label" id="teacherUsername">vythithutrinh</p>
-                        </li>
-                        <li class="notify-form__account-item">
-                            <p class="account-item__label">Mật khẩu:</p>
-                            <p class="account-item__label" id="teacherPass">123456</p>
-                        </li>
-                    </ul>
-
-                    <div class="notify-form__controls">
-                        <button class="btn notify-form__controls-btn" onclick="cancelBtn()">Trở lại</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="modal" id="modal-logOut">
         <div class="modal__overlay">
         </div>
@@ -160,6 +166,83 @@
             </div>
         </div>
     </div>
-    <script src="../js/admin/addTeacher.js"></script>
+
+    <div class="modal" id="modal-changePass">
+        <div class="modal__overlay">
+        </div>
+        <div class="modal__body">
+            <div class="changePass-form">
+                <div class="changePass-form__container">
+                    <div class="changePass-form__header">
+                        <h1 class="changePass-form__heading">Thay đổi mật khẩu</h1>
+                    </div>
+                    <div class="changePass-form__input">
+                        <ul class="changePass-form__input-list">
+                            <li class="changePass-form__input-item">
+                                <p class="changePass__text">Mật khẩu mới</p>
+                                <input type="password" class="changePass__input" id="newPass">
+                            </li>
+                            <li class="changePass-form__input-item">
+                                <p class="changePass__text">Nhập lại mật khẩu</p>
+                                <input type="password" class="changePass__input" id="re_newPass" oninput="checkRePass()">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="changePass-form__controls">
+                        <button class="btn" onclick="cancelChangePass()" >Trở lại</button>
+                        <button class="btn" onclick="changePassword()" id="changePassBtn" disabled="true">Đổi mật khẩu</button>
+                    </div>
+                    <script>
+                        function checkRePass() {
+                            var password = document.getElementById("newPass")
+                            var rePassword = document.getElementById("re_newPass")
+                            var btn = document.getElementById("changePassBtn")
+
+                            if(password.value != rePassword.value) {
+                                rePassword.style.cssText = "color: red; outline:2px solid red;"
+                                btn.disabled = true
+                                btn.style.cssText = "background-color: #999; cursor: default; box-shadow: none"
+                            }
+                            else 
+                            {
+                                rePassword.style.cssText = "color: var(--black-color); outline: none;"
+                                btn.disabled = false
+                                btn.style.cssText = "background-color: var(--primary-color); cursor: pointer; "
+                            }
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal-delete">
+        <div class="modal__overlay">
+        </div>
+        <div class="modal__body">
+            <div class="delete-form">
+                <div class="delete-form__container" id="deleteStudent">
+                    <div class="delete-form__header">
+                        <h1 class="delete-form__heading">Bạn có thực sự muốn xoá tài khoản này</h1>
+                    </div>
+                    
+                    <div class="delete-form__controls">
+                        <button class="btn" onclick="cancelDelete()">Trở lại</button>
+                        <button class="btn" onclick="deleteAcc()">Xoá</button>
+                    </div>
+                </div>
+                <!-- Success -->
+                <div class="success-form__container" id="formSuccess">
+                    <div class="addClass-form__header">
+                        <h1 class="addClass-form__heading">Xoá thành công</h1>
+                    </div>                    
+                    <div class="addClass-form__controls">
+                        <button class="btn" onclick="successClose()">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/admin/managerUser.js"></script>
 </body>
 </html>

@@ -18,7 +18,7 @@
                 <div class="header">
                     <div class="header-with-avatar">
                         <img src="../assets/img/icon.png" alt="" class="header__icon">
-                        <a class="header__software-name" href="./homeStudent.html">
+                        <a class="header__software-name" href="./homeTeacher.html">
                             <h2>Online Classroom 
                             </br> Management Support Tool</h2>
                         </a>
@@ -31,10 +31,10 @@
     
                             <ul class="header__user-menu">
                                 <li class="header__user-item">
-                                    <a href="./profileStudent.html" class="" onclick="">Thông tin cá nhân</a>
+                                    <a href="./profileTeacher.html" class="" onclick="">Thông tin cá nhân</a>
                                 </li>
                                 <li class="header__user-item">
-                                    <a href="" class="">Đổi mật khẩu</a>
+                                    <a href="./changePassTeacher.html" class="">Đổi mật khẩu</a>
                                 </li>
                                 <li class="header__user-item">
                                     <div onclick="openFormLogout()">Đăng xuất</div>
@@ -59,18 +59,12 @@
                                     <img src="1" alt="Avatar" class="img-avatar" id="img-avatar" onerror="this.onerror=null; this.src='../assets/img/avatar.jpg';">
                                     <p class="text-avatar">Ảnh đại diện</p>
                                 </div>
-                                <div class="img-container__img-data">
-                                    <div class="text-data">Để hỗ trợ cho việc điểm danh bằng nhận diện khuôn mặt vui lòng tải ảnh lên</div>
-                                    <div id="img-data">
-                                        
-                                    </div>
-                                </div>
 
                                 <div class="img-container__upload">
                                     <div class="text-upload mg-bottom-m">
-                                        Lưu ý: Đặt tên ảnh theo định dạng 'MSSV-Thứ tự.jpg' và tải lên phải đủ 3 ảnh
+                                        Lưu ý: Đặt tên ảnh theo định dạng 'Tên đăng nhập.jpg'
                                         </br>
-                                        Ví dụ: 24211214089-1.jpg
+                                        Ví dụ: levanhoang.jpg
                                     </div>
                                     <input type="file" name="" id="img-data-upload">
                                     <button class="btn" onclick="getImg()">Tải lên</button>
@@ -87,26 +81,15 @@
                                     <input type="text" class="line-input__input" id="name">
                                 </div>
                                 <div class="line-input">
-                                    <p class="line-input__label">Mã sinh viên: </p>
-                                    <input type="text" class="line-input__input" id="student-code">
-                                </div>
-                                <div class="line-input">
-                                    <p class="line-input__label">Giới tính :</p>
-                                    <div class="radio-text">
-                                        <input type="radio" name="gentle" id="men" class="radio-btn"><p>Nam</p>
-                                        <input type="radio" name="gentle" id="women" class="radio-btn"><p>Nữ</p>
-                                    </div>
-                                </div>
-                                <div class="line-input">
-                                    <p class="line-input__label">Ngày sinh: </p>
-                                    <input type="date" class="line-input__input" id="date">
-                                </div>
-                                <div class="line-input">
                                     <p class="line-input__label">Email: </p>
                                     <input type="email" class="line-input__input" id="email">
                                 </div>
+                                <div class="line-input">
+                                    <p class="line-input__label">Số Điện thoại: </p>
+                                    <input type="text" class="line-input__input" id="phone">
+                                </div>
                                 
-                                <button class="btn btn-profile" onclick="getPutInfo()">Cập nhật</button>
+                                <button class="btn btn-profile" onclick="getPutInfoTeacher()">Cập nhật</button>
                             </div>
 
                         </div>
@@ -120,7 +103,7 @@
             <p class="footer">Copyright © 2022 all rights reserved</p>
         </footer>
     </div>
-    <script src="../js/student/profileStudent.js"></script>
+    <script src="../js/teacher/profileTeacher.js"></script>
     <!-- Modal layout -->
     <div class="modal" id="modal-logOut">
         <div class="modal__overlay">

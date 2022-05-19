@@ -1,0 +1,30 @@
+.app__container {
+    height: 600px;
+}
+
+.body-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2rem;
+    height: 410px;
+    justify-content: center;
+}
+
+.content-item {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-item__input {
+    height: 30px;
+}
+
+.control {
+    width: 250px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+}

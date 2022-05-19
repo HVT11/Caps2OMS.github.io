@@ -42,7 +42,16 @@ function cancelLogout(){
 }
 
 //Delete
-function openDelete(id, username) {
+function openDelete3(id, username, type) {
+    var modal = document.getElementById("modal-delete")
+    modal.classList.add("modal--active")
+
+    sessionStorage.setItem("id",id)
+    sessionStorage.setItem("user_delete", username)
+    sessionStorage.setItem("user_delete-type", type)
+}
+
+function openDelete2(id, username) {
     var modal = document.getElementById("modal-delete")
     modal.classList.add("modal--active")
 
@@ -80,8 +89,16 @@ function successAttendanceClose() {
 }
 
 // Form ChangePassword
-function openChangePass(username) {
+function openChangePass1(username) {
     sessionStorage.setItem("user_changePass",username)
+
+    var modal = document.getElementById("modal-changePass")
+    modal.classList.add("modal--active")
+}
+
+function openChangePass2(username, type) {
+    sessionStorage.setItem("user_changePass",username)
+    sessionStorage.setItem("user_changePass-type",type)
 
     var modal = document.getElementById("modal-changePass")
     modal.classList.add("modal--active")

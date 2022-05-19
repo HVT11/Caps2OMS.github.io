@@ -69,53 +69,15 @@ fileInput.addEventListener('change', async () => {
 		if(label != "unknown") listDetect.push(label)
 	}
 
-	var total = 0
-	
-	listDetect.forEach(username => {
-		total++
-		getAttendance((attendances) =>{
-			var attendanceID = attendances.find(attendance => (attendance.Username == username && attendance.ListAttendanceID == listAttendanceID)).AttendanceID
-			addAttendanceAuto(attendanceID, username)
-		})
+	sessionStorage.setItem('listDetectDone', listDetect)
+
+	console.log(listDetect)
+
+	listDetect.forEach(element => {
+		document.getElementById(element + '-check2').checked = true
 	})
-
-	addTotal(total)
-
+	
 	setTimeout(() => {
-		getAttendance(renderAttendance)
 		document.getElementById('detecting').innerHTML = 'Đã xong'
-	}, 15000)
+	}, 1000)
 })
-
-function addAttendanceAuto(AttendanceID, Username) {
-	var formData = {
-        AttendanceID: AttendanceID,
-        Username : Username,
-        Status: true,
-        Note: null,
-        ListAttendanceID: listAttendanceID
-    }
-
-    putAttendance(formData)
-}
-
-function addTotal(total) {
-	var formData = {
-        ListAttendanceID: listAttendanceID,
-		Total: total,
-		ClassID: ClassID
-    }
-
-	putListAttendance(formData)
-}
-
-function putListAttendance(data) {
-    var options = {
-        header:{
-            'Content-type': 'application/json',
-        },
-        method: "PUT",
-        body: JSON.stringify(data)
-    }
-    fetch(listAttendanceApi, options)
-}

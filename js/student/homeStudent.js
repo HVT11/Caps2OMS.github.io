@@ -1,8 +1,10 @@
 var userName = sessionStorage.getItem('username')
+var avatar = `http://127.0.0.1:8000/media/${userName}-1.jpg`
 
 function start() {
     var header_username = document.getElementById("username")
     header_username.innerHTML = userName
+    document.getElementById('header__avatar').src = avatar
 }
 
 start()

@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OCMS | Online Classroom Management Support Tool</title>
-    <link rel="icon" type="image/x-icon" href="../assets/img/icon.png" />
+    <title>OCMS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"/>
     <link rel="stylesheet" href="../assets/styles/base.css">
-    <link rel="stylesheet" href="../assets/styles/admin/content.css">
+    <link rel="stylesheet" href="../assets/styles/change-pass.css">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.1.1/css/all.min.css">
     <script src="../js/base.js"></script>
 </head>
@@ -19,18 +18,23 @@
                 <div class="header">
                     <div class="header-with-avatar">
                         <img src="../assets/img/icon.png" alt="" class="header__icon">
-                        <h2 class="header__software-name">Online Classroom 
-                        </br> Management Support Tool</h2>
+                        <a class="header__software-name" href="./homeTeacher.html">
+                            <h2>Online Classroom 
+                            </br> Management Support Tool</h2>
+                        </a>
                     </div>
                     <div class="header-with-avatar">
                         <div class="header__user">
-                            <img src="../assets/img/avatar.jpg" alt="avatar" class="header__avatar">
+                            <img src="1" alt="avatar" class="header__avatar" id="header__avatar" onerror="this.onerror=null; this.src='../assets/img/avatar.jpg';">
                             <p class="header__username" id="username"></p>
                             <i class="header__icon-down fa-solid fa-angle-down"></i>
     
                             <ul class="header__user-menu">
                                 <li class="header__user-item">
-                                    <a href="" class="">Đổi mật khẩu</a>
+                                    <a href="./profileTeacher.html" class="">Thông tin cá nhân</a>
+                                </li>
+                                <li class="header__user-item">
+                                    <a href="./changePassTeacher.html" class="">Đổi mật khẩu</a>
                                 </li>
                                 <li class="header__user-item">
                                     <div onclick="openFormLogout()">Đăng xuất</div>
@@ -44,64 +48,25 @@
         <div class="app__container">
             <div class="grid">
                 <div class="grid__row">
-                    <div class="grid__column-2">
-                        <nav class="navbar">
-                            <ul class="navbar-list">
-                                <li class="navbar-item">
-                                    <a href="./admin.html" class="navbar-item__link">
-                                        <i class="navbar-item__icon fa-solid fa-calculator"></i>
-                                        <p class="navbar-item__text">Thống kê</p>
-                                    </a>
-                                </li>
-                                <li class="navbar-item">
-                                    <a href="./manageUser.html" class="navbar-item__link">
-                                        <i class="navbar-item__icon fa-solid fa-list-check"></i>
-                                        <p class="navbar-item__text">Quản lí người dùng</p>
-                                    </a>
-                                </li>
-                                <li class="navbar-item">
-                                    <a href="./addTeacher.html" class="navbar-item__link">
-                                        <i class="navbar-item__icon fa-solid fa-address-book"></i>
-                                        <p class="navbar-item__text">Thêm giáo viên</p>
-                                    </a>
-                                </li>
-                                <li class="navbar-item">
-                                    <a href="./changePass.html" class="navbar-item__link">
-                                        <i class="navbar-item__icon fa-solid fa-key"></i>
-                                        <p class="navbar-item__text">Đổi mật khẩu</p>
-                                    </a>
-                                </li>
-                                <li class="navbar-item">
-                                    <a href="./contact.html" class="navbar-item__link">
-                                        <i class="navbar-item__icon fa-solid fa-bell"></i>
-                                        <p class="navbar-item__text">Liên hệ</p>
-                                    </a>
-                                </li>
-                                <li class="navbar-item">
-                                    <div class="navbar-item__link" onclick="openFormLogout()">
-                                        <i class="navbar-item__icon fa-solid fa-right-from-bracket"></i>
-                                        <p class="navbar-item__text">Đăng xuất</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="grid__column-10">
-                        <div class="content">
-                            <h1 class="content-heading">Đổi mật khẩu</h1>
-                            <ul class="content-list">
-                                <li class="content-item">
+                    <div class="main-container">
+                        <div class="body-heading">
+                            <h1 class="body-heading-title">ĐỔI MẬT KHẨU</h1>
+                        </div>
+    
+                        <div class="body-content">
+                            <div class="content-list">
+                                <div class="content-item">
                                     <p class="content-item__label">Mật khẩu cũ:</p>
                                     <input type="password" class="content-item__input" id="password" onfocusout="validate()">
-                                </li>
-                                <li class="content-item">
+                                </div>
+                                <div class="content-item">
                                     <p class="content-item__label">Mật khẩu mới:</p>
                                     <input type="password" class="content-item__input" id="new_password">
-                                </li>
-                                <li class="content-item">
+                                </div>
+                                <div class="content-item">
                                     <p class="content-item__label">Nhập lại mật khẩu:</p>
                                     <input type="password" class="content-item__input" id="re-pass" oninput="checkRePass()">
-                                </li>
+                                </div>
                                 <script>
                                     function checkRePass() {
                                         var password = document.getElementById("new_password")
@@ -114,8 +79,11 @@
                                         }
                                     }
                                 </script>
-                            </ul>
-                            <button class="btn" onclick="addBtn()">Đổi mật khẩu</button>
+                            </div>
+                            <div class="control">
+                                <button class="btn" onclick="moveToMainPage()">Quay lại</button>
+                                <button class="btn" onclick="changePass()" id="change-pass">Đổi mật khẩu</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -127,6 +95,8 @@
             <p class="footer">Copyright © 2022 all rights reserved</p>
         </footer>
     </div>
+    <script src="../js/changePass.js"></script>
+    <!-- Modal layout -->
     <div class="modal" id="modal-logOut">
         <div class="modal__overlay">
         </div>
@@ -145,6 +115,6 @@
             </div>
         </div>
     </div>
-    <script src="../js/admin/changePass.js"></script>
+    
 </body>
 </html>
